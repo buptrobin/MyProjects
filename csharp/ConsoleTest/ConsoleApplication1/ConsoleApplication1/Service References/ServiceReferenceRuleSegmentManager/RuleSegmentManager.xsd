@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:simpleType name="SegmentType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="RuleSegment" />
+      <xs:enumeration value="TaxonomySegment" />
+      <xs:enumeration value="MixedSegment" />
+      <xs:enumeration value="PMSegment" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SegmentType" nillable="true" type="tns:SegmentType" />
+  <xs:complexType name="RuleSegment">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SegmentBase">
+        <xs:sequence>
+          <xs:element name="computeActionTime" nillable="true" type="xs:dateTime" />
+          <xs:element name="expirationTime" nillable="true" type="xs:string" />
+          <xs:element name="expirationTimeType" type="tns:SegmentExpirationTimeFrameType" />
+          <xs:element name="fullExpression" nillable="true" type="xs:string" />
+          <xs:element name="rules" nillable="true" type="tns:ArrayOfSegmentRule" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RuleSegment" nillable="true" type="tns:RuleSegment" />
+  <xs:complexType name="SegmentBase">
+    <xs:sequence>
+      <xs:element name="_x003C_HitLogicRefId_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_IsSandboxSegment_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="_x003C_PropertyPack_x003E_k__BackingField" nillable="true" type="q1:ArrayOfKeyValueOfstringstring" />
+      <xs:element name="authoringSegmentId" type="xs:int" />
+      <xs:element name="comment" nillable="true" type="xs:string" />
+      <xs:element name="country" nillable="true" type="xs:string" />
+      <xs:element name="createTime" type="xs:dateTime" />
+      <xs:element name="currentStatus" type="tns:ComputeStatus" />
+      <xs:element name="description" nillable="true" type="xs:string" />
+      <xs:element name="lastModifiedTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="ownerId" nillable="true" type="xs:string" />
+      <xs:element name="projectId" nillable="true" type="xs:string" />
+      <xs:element name="publishStatus" type="tns:PublishStatus" />
+      <xs:element name="segmentId" nillable="true" type="xs:string" />
+      <xs:element name="segmentName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SegmentBase" nillable="true" type="tns:SegmentBase" />
+  <xs:simpleType name="ComputeStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotComputed" />
+      <xs:enumeration value="Pending" />
+      <xs:enumeration value="Running" />
+      <xs:enumeration value="Computed" />
+      <xs:enumeration value="Failed" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ComputeStatus" nillable="true" type="tns:ComputeStatus" />
+  <xs:simpleType name="PublishStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotPublished" />
+      <xs:enumeration value="PublishSuccessfully" />
+      <xs:enumeration value="PublishUnsuccessfully" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PublishStatus" nillable="true" type="tns:PublishStatus" />
+  <xs:simpleType name="SegmentExpirationTimeFrameType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Hour" />
+      <xs:enumeration value="Day" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SegmentExpirationTimeFrameType" nillable="true" type="tns:SegmentExpirationTimeFrameType" />
+  <xs:complexType name="ArrayOfSegmentRule">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SegmentRule" nillable="true" type="tns:SegmentRule" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSegmentRule" nillable="true" type="tns:ArrayOfSegmentRule" />
+  <xs:complexType name="SegmentRule">
+    <xs:sequence>
+      <xs:element name="constraints" nillable="true" type="tns:ArrayOfRuleConstraint" />
+      <xs:element name="indexNo" type="xs:int" />
+      <xs:element name="ruleId" nillable="true" type="xs:string" />
+      <xs:element name="ruleType" type="tns:RuleType" />
+      <xs:element name="segmentId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SegmentRule" nillable="true" type="tns:SegmentRule" />
+  <xs:complexType name="ArrayOfRuleConstraint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RuleConstraint" nillable="true" type="tns:RuleConstraint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRuleConstraint" nillable="true" type="tns:ArrayOfRuleConstraint" />
+  <xs:complexType name="RuleConstraint">
+    <xs:sequence>
+      <xs:element name="constraintId" nillable="true" type="xs:string" />
+      <xs:element name="constraintValue" nillable="true" type="xs:string" />
+      <xs:element name="dataType" type="tns:RuleAttributeDataType" />
+      <xs:element name="expressions" nillable="true" type="tns:ArrayOfConstraintExpression" />
+      <xs:element name="indexNo" type="xs:int" />
+      <xs:element name="ruleId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RuleConstraint" nillable="true" type="tns:RuleConstraint" />
+  <xs:simpleType name="RuleAttributeDataType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Long" />
+      <xs:enumeration value="Bool" />
+      <xs:enumeration value="Float" />
+      <xs:enumeration value="Text" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RuleAttributeDataType" nillable="true" type="tns:RuleAttributeDataType" />
+  <xs:complexType name="ArrayOfConstraintExpression">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConstraintExpression" nillable="true" type="tns:ConstraintExpression" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConstraintExpression" nillable="true" type="tns:ArrayOfConstraintExpression" />
+  <xs:complexType name="ConstraintExpression">
+    <xs:sequence>
+      <xs:element name="attributeId" nillable="true" type="xs:string" />
+      <xs:element name="constraintId" nillable="true" type="xs:string" />
+      <xs:element name="expressionId" nillable="true" type="xs:string" />
+      <xs:element name="expressionValue" nillable="true" type="xs:string" />
+      <xs:element name="indexNo" type="xs:int" />
+      <xs:element name="myOperator" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConstraintExpression" nillable="true" type="tns:ConstraintExpression" />
+  <xs:simpleType name="RuleType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ParentRule" />
+      <xs:enumeration value="ChildRule" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RuleType" nillable="true" type="tns:RuleType" />
+  <xs:complexType name="ArrayOfSegmentFrequency">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SegmentFrequency" nillable="true" type="tns:SegmentFrequency" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSegmentFrequency" nillable="true" type="tns:ArrayOfSegmentFrequency" />
+  <xs:complexType name="SegmentFrequency">
+    <xs:sequence>
+      <xs:element name="frequencyType" nillable="true" type="xs:string" />
+      <xs:element name="text" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SegmentFrequency" nillable="true" type="tns:SegmentFrequency" />
+  <xs:complexType name="SegmentBaseSimple">
+    <xs:sequence>
+      <xs:element name="_x003C_AuthoringSegmentId_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_CreateTime_x003E_k__BackingField" type="xs:dateTime" />
+      <xs:element name="_x003C_Description_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_LastModifiedTime_x003E_k__BackingField" nillable="true" type="xs:dateTime" />
+      <xs:element name="_x003C_OwnerId_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SegmentId_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SegmentName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SegmentTypeId_x003E_k__BackingField" type="tns:SegmentType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SegmentBaseSimple" nillable="true" type="tns:SegmentBaseSimple" />
+  <xs:simpleType name="AccessCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoAccess" />
+      <xs:enumeration value="Explore" />
+      <xs:enumeration value="Read" />
+      <xs:enumeration value="Copy" />
+      <xs:enumeration value="Owned" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AccessCode" nillable="true" type="tns:AccessCode" />
+</xs:schema>

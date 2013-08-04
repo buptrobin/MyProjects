@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plan name="PLAN_SI_3Round">
+  <tasks>
+    <task market="US" owner="Ed" segmentname="New Rule 1" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="US" owner="Ed" segmentname="New Rule 2" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="US" owner="Ed" segmentname="New Rule 3" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="US" owner="jingzho" segmentname="New BYOT 1" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="US" owner="jingzho" segmentname="New BYOT 2" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="US" owner="jingzho" segmentname="New BYOT 3" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="US" owner="jingzho" segmentname="New BYOT 4" ProductionStatus="Test" SegmentAction="New"/>
+
+	<task market="AU" owner="phx\liangshi" segmentname="Live_PM_01_jiad" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="AU" owner="phx\liangshi" segmentname="Ed_BT - CA - Luxury Car Researchers" ProductionStatus="Live" SegmentAction="Update"/>
+
+	<!--task market="US" owner="Ed" segmentname="BT - US - Womens Luxury Brands Shoppers" ProductionStatus="Live" SegmentAction="Update"/-->
+	
+	<task market="UK" owner="amit" segmentname="tax-2" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="US" owner="phx\liangshi" segmentname="PM2" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="AU" owner="Ed" segmentname="TestSegment1KWs" ProductionStatus="Test" SegmentAction="Flush"/>
+	
+  </tasks>
+</plan>	

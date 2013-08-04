@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<plan>
+  <tasks>
+    <task market="AU" owner="testuser1" segmentname="LUX1" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="AU" owner="testuser1" segmentname="LUX2" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="AU" owner="testuser1" segmentname="LUX3" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="AU" owner="testuser1" segmentname="LUX4" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="AU" owner="testuser1" segmentname="RULE1" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="AU" owner="testuser1" segmentname="RULE2" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="AU" owner="testuser1" segmentname="RULE3" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="AU" owner="testuser1" segmentname="RULE4" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="AU" owner="testuser1" segmentname="BYOT1" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="AU" owner="testuser1" segmentname="BYOT2" ProductionStatus="Test" SegmentAction="New"/>
+
+    <task market="AU" owner="amit" segmentname="TestByot4Amit" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="AU" owner="Ed" segmentname="Ismail_BT-US-Clothing and Shoes-30d/2b" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="AU" owner="Ed" segmentname="TestTaxEd4ABT" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="AU" owner="Ed" segmentname="TestSegment1KWs" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="AU" owner="Ed" segmentname="TestSegment3KWs-1" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="AU" owner="phx\liangshi" segmentname="Live_PM_01_jiad" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="AU" owner="phx\liangshi" segmentname="Ed_BT - CA - Luxury Car Researchers" ProductionStatus="Live" SegmentAction="New"/>
+
+    <task market="US" owner="phx\liangshi" segmentname="PM1" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM2" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM3" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM4" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM5" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM6" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM7" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM8" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM9" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM10" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM11" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM12" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM13" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM14" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM15" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM16" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM17" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM18" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM19" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM20" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM21" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM22" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM23" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM24" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM25" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="US" owner="phx\liangshi" segmentname="PM26" ProductionStatus="Test" SegmentAction="New"/>
+
+    <task market="UK" owner="amit" segmentname="rule-1" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="UK" owner="amit" segmentname="rule-2" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="UK" owner="amit" segmentname="rule-3" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="UK" owner="amit" segmentname="tax-1" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="UK" owner="amit" segmentname="tax-2" ProductionStatus="Test" SegmentAction="New"/>
+    <task market="UK" owner="amit" segmentname="tax-3" ProductionStatus="Live" SegmentAction="New"/>
+    <task market="UK" owner="amit" segmentname="mix-1" ProductionStatus="Live" SegmentAction="New"/>
+
+    <task market="FR" owner="sybil" segmentname="BT - FR - Sports" ProductionStatus="Live" SegmentAction="Update"/>
+    <task market="US" owner="amit" segmentname="BT - US - Cat Owners" ProductionStatus="Live" SegmentAction="Update"/>
+    <task market="US" owner="Ed" segmentname="BT - US - Womens Luxury Brands Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+    <task market="US" owner="amit" segmentname="BT - US - MSN Portal Users who do not use Live Search" ProductionStatus="Test" SegmentAction="Update"/>
+    <task market="US" owner="amit" segmentname="BT - US - TV Enthusiasts" ProductionStatus="Live" SegmentAction="Update"/>
+
+    <task market="US" owner="xiaobin" segmentname="BT - US - Flower Shoppers - 20081111 - 10d/1b" ProductionStatus="Test" SegmentAction="Flush"/>
+    <task market="US" owner="huli" segmentname="Custom BT - US - 03 - Without BK data" ProductionStatus="Test" SegmentAction="Flush"/>
+
+  </tasks>
+</plan>

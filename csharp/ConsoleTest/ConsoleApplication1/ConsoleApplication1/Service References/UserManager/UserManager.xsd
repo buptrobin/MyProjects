@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element name="attributeQuota" type="xs:int" />
+      <xs:element name="email" nillable="true" type="xs:string" />
+      <xs:element name="encryptedpassword" nillable="true" type="xs:string" />
+      <xs:element name="segmentQuota" type="xs:int" />
+      <xs:element name="status" type="xs:boolean" />
+      <xs:element name="userId" nillable="true" type="xs:string" />
+      <xs:element name="userProfileModel" nillable="true" type="tns:UserProfile" />
+      <xs:element name="userType" type="tns:UserType" />
+      <xs:element name="username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="UserProfile">
+    <xs:sequence>
+      <xs:element name="defaultSolutionId" nillable="true" type="xs:string" />
+      <xs:element name="userId" nillable="true" type="xs:string" />
+      <xs:element name="userSolutions" nillable="true" type="tns:ArrayOfUserSolutionModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserProfile" nillable="true" type="tns:UserProfile" />
+  <xs:complexType name="ArrayOfUserSolutionModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserSolutionModel" nillable="true" type="tns:UserSolutionModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserSolutionModel" nillable="true" type="tns:ArrayOfUserSolutionModel" />
+  <xs:complexType name="UserSolutionModel">
+    <xs:sequence>
+      <xs:element name="defaultProjectId" nillable="true" type="xs:string" />
+      <xs:element name="id" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserSolutionModel" nillable="true" type="tns:UserSolutionModel" />
+  <xs:simpleType name="UserType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="SegmentManager" />
+      <xs:enumeration value="Administrator" />
+      <xs:enumeration value="IntermediateUser" />
+      <xs:enumeration value="BasicUser" />
+      <xs:enumeration value="SegmentInsightUser" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UserType" nillable="true" type="tns:UserType" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+</xs:schema>

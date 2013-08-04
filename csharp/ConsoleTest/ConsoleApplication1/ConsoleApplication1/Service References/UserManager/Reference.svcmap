@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d610f06c-fe42-4a3d-8569-308e5b2d4cd6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://apc-rowa-v1/WinService/UserManager" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UserManager.disco" MetadataType="Disco" ID="6ac80e47-8945-42af-9d21-3e3194b97e6c" SourceId="1" SourceUrl="http://apc-rowa-v1/WinService/UserManager?disco" />
+    <MetadataFile FileName="UserManager.xsd" MetadataType="Schema" ID="5ab5cbac-7ff5-43e7-9222-67ae51fcf9ce" SourceId="1" SourceUrl="http://apc-rowa-v1/WinService/UserManager?xsd=xsd2" />
+    <MetadataFile FileName="UserManager1.xsd" MetadataType="Schema" ID="182e0b65-0886-4d3a-bc76-a5d26d86daa6" SourceId="1" SourceUrl="http://apc-rowa-v1/WinService/UserManager?xsd=xsd3" />
+    <MetadataFile FileName="UserManager2.xsd" MetadataType="Schema" ID="60ff8f27-cd99-4abb-a173-ce448ce4bc6b" SourceId="1" SourceUrl="http://apc-rowa-v1/WinService/UserManager?xsd=xsd1" />
+    <MetadataFile FileName="UserManager3.xsd" MetadataType="Schema" ID="8f42aa34-4c05-40cd-8471-1360881ee448" SourceId="1" SourceUrl="http://apc-rowa-v1/WinService/UserManager?xsd=xsd0" />
+    <MetadataFile FileName="UserManager.wsdl" MetadataType="Wsdl" ID="d37e2302-50a9-41da-81de-a281e4be5bd4" SourceId="1" SourceUrl="http://apc-rowa-v1/WinService/UserManager?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

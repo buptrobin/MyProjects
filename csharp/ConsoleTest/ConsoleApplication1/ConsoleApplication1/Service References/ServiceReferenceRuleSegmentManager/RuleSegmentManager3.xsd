@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Model" />
+  <xs:import schemaLocation="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.AudienceIntelligenceService.FastScoringService" />
+  <xs:element name="PublishSegment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clientMinuteTimeZoneOffset" nillable="true" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PublishSegmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PublishSegmentResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSegmentTypeById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSegmentTypeByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Model" minOccurs="0" name="GetSegmentTypeByIdResult" type="q1:SegmentType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Add">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Model" minOccurs="0" name="segment" nillable="true" type="q2:RuleSegment" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Delete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllFrequencyTypeModel">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllFrequencyTypeModelResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Model" minOccurs="0" name="GetAllFrequencyTypeModelResult" nillable="true" type="q3:ArrayOfSegmentFrequency" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSegments">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSegmentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllSegmentsResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Model" minOccurs="0" name="GetByIdResult" nillable="true" type="q4:RuleSegment" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSegmentBaseSimpleById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSegmentBaseSimpleByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Model" minOccurs="0" name="GetSegmentBaseSimpleByIdResult" nillable="true" type="q5:SegmentBaseSimple" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExpirationTime">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExpirationTimeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetExpirationTimeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePublishStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="status" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePublishStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdatePublishStatusResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataTableById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataTableByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataTableByIdResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExportString">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clientMinuteTimeZoneOffset" nillable="true" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExportStringResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetExportStringResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isError" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExportStringWithoughValidation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clientMinuteTimeZoneOffset" nillable="true" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExportStringWithoughValidationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetExportStringWithoughValidationResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExportStringArray">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="segmentId" nillable="true" type="q6:ArrayOfstring" />
+        <xs:element minOccurs="0" name="clientMinuteTimeZoneOffset" nillable="true" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExportStringArrayResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetExportStringArrayResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOwnerAndSharedInSegments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ownerId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="projectId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOwnerAndSharedInSegmentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetOwnerAndSharedInSegmentsResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPublishedSegments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="solutionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="projectId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPublishedSegmentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPublishedSegmentsResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSegmentsByProjectId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="projectId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSegmentsByProjectIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSegmentsByProjectIdResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSegmentsForPageSharedOutStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="currentOwnerId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="projectId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSegmentsForPageSharedOutStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSegmentsForPageSharedOutStatusResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSegmentsForPageSharedOutUpdate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ownerId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="shareOutTo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSegmentsForPageSharedOutUpdateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSegmentsForPageSharedOutUpdateResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSharedInSegments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="currentOwnerId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="projectId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSharedInSegmentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSharedInSegmentsResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsIncludeDerivedAttributeInSegment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsIncludeDerivedAttributeInSegmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsIncludeDerivedAttributeInSegmentResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsXmlFormatWell">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsXmlFormatWellResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsXmlFormatWellResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShareInSegment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Model" minOccurs="0" name="accessCode" type="q7:AccessCode" />
+        <xs:element minOccurs="0" name="shareInUser" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="projectId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShareInSegmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ShareInSegmentResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShareOutSegment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Model" minOccurs="0" name="accessCode" type="q8:AccessCode" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShareOutSegmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ShareOutSegmentResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Update">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Model" minOccurs="0" name="segment" nillable="true" type="q9:RuleSegment" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNewSegmentNameForSaveAs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="oldSegmentName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="currentOwnerId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="segmentOwnerId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNewSegmentNameForSaveAsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetNewSegmentNameForSaveAsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateSingleSegment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Model" minOccurs="0" name="segment" nillable="true" type="q10:SegmentBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateSingleSegmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidateSingleSegmentResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetValidateDetail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="entityId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetValidateDetailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetValidateDetailResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SwapAuthoringSegmentIds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentIdFirst" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="segmentIdSecond" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SwapAuthoringSegmentIdsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SwapAuthoringSegmentIdsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSegmentIdByScoringJobId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="scoringJobId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSegmentIdByScoringJobIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSegmentIdByScoringJobIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FastScoreSegment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FastScoreSegmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FastScoreSegmentResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FastScoreResultAggregate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FastScoreResultAggregateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.AudienceIntelligenceService.FastScoringService" minOccurs="0" name="FastScoreResultAggregateResult" nillable="true" type="q11:ScoreResultAggregate" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSegmentPropertyPack">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSegmentPropertyPackResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetSegmentPropertyPackResult" nillable="true" type="q12:ArrayOfKeyValueOfstringstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddSegmentPropertyPackProperty">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="value" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddSegmentPropertyPackPropertyResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExportSegmentPack">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="segmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExportSegmentPackResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExportSegmentPackResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

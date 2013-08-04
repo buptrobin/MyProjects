@@ -1,0 +1,3147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" name="RuleSegmentManager" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:ProtectionToken>
+              <wsp:Policy>
+                <sp:SecureConversationToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                  <wsp:Policy>
+                    <sp:RequireDerivedKeys />
+                    <sp:BootstrapPolicy>
+                      <wsp:Policy>
+                        <sp:SignedParts>
+                          <sp:Body />
+                          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+                        </sp:SignedParts>
+                        <sp:EncryptedParts>
+                          <sp:Body />
+                        </sp:EncryptedParts>
+                        <sp:SymmetricBinding>
+                          <wsp:Policy>
+                            <sp:ProtectionToken>
+                              <wsp:Policy>
+                                <sp:SpnegoContextToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                                  <wsp:Policy>
+                                    <sp:RequireDerivedKeys />
+                                  </wsp:Policy>
+                                </sp:SpnegoContextToken>
+                              </wsp:Policy>
+                            </sp:ProtectionToken>
+                            <sp:AlgorithmSuite>
+                              <wsp:Policy>
+                                <sp:Basic256 />
+                              </wsp:Policy>
+                            </sp:AlgorithmSuite>
+                            <sp:Layout>
+                              <wsp:Policy>
+                                <sp:Strict />
+                              </wsp:Policy>
+                            </sp:Layout>
+                            <sp:IncludeTimestamp />
+                            <sp:EncryptSignature />
+                            <sp:OnlySignEntireHeadersAndBody />
+                          </wsp:Policy>
+                        </sp:SymmetricBinding>
+                        <sp:Wss11>
+                          <wsp:Policy>
+                            <sp:MustSupportRefKeyIdentifier />
+                            <sp:MustSupportRefIssuerSerial />
+                            <sp:MustSupportRefThumbprint />
+                            <sp:MustSupportRefEncryptedKey />
+                          </wsp:Policy>
+                        </sp:Wss11>
+                        <sp:Trust10>
+                          <wsp:Policy>
+                            <sp:MustSupportIssuedTokens />
+                            <sp:RequireClientEntropy />
+                            <sp:RequireServerEntropy />
+                          </wsp:Policy>
+                        </sp:Trust10>
+                      </wsp:Policy>
+                    </sp:BootstrapPolicy>
+                  </wsp:Policy>
+                </sp:SecureConversationToken>
+              </wsp:Policy>
+            </sp:ProtectionToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+            <sp:EncryptSignature />
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportRefKeyIdentifier />
+            <sp:MustSupportRefIssuerSerial />
+            <sp:MustSupportRefThumbprint />
+            <sp:MustSupportRefEncryptedKey />
+          </wsp:Policy>
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_PublishSegment_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_PublishSegment_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_PublishSegment_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentTypeById_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentTypeById_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentTypeById_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_Add_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_Add_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_Add_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_Delete_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_Delete_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_Delete_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetAllFrequencyTypeModel_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetAllFrequencyTypeModel_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetAllFrequencyTypeModel_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetAllSegments_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetAllSegments_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetAllSegments_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetById_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetById_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetById_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentBaseSimpleById_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentBaseSimpleById_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentBaseSimpleById_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetExpirationTime_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetExpirationTime_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetExpirationTime_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_UpdatePublishStatus_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_UpdatePublishStatus_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_UpdatePublishStatus_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetDataTableById_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetDataTableById_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetDataTableById_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetExportString_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetExportString_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetExportString_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetExportStringWithoughValidation_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetExportStringWithoughValidation_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetExportStringWithoughValidation_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetExportStringArray_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetExportStringArray_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetExportStringArray_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetOwnerAndSharedInSegments_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetOwnerAndSharedInSegments_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetOwnerAndSharedInSegments_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetPublishedSegments_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetPublishedSegments_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetPublishedSegments_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentsByProjectId_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentsByProjectId_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentsByProjectId_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentsForPageSharedOutStatus_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentsForPageSharedOutStatus_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentsForPageSharedOutStatus_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentsForPageSharedOutUpdate_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentsForPageSharedOutUpdate_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentsForPageSharedOutUpdate_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSharedInSegments_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSharedInSegments_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSharedInSegments_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_IsIncludeDerivedAttributeInSegment_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_IsIncludeDerivedAttributeInSegment_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_IsIncludeDerivedAttributeInSegment_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_IsXmlFormatWell_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_IsXmlFormatWell_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_IsXmlFormatWell_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_ShareInSegment_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_ShareInSegment_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_ShareInSegment_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_ShareOutSegment_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_ShareOutSegment_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_ShareOutSegment_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_Update_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_Update_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_Update_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetNewSegmentNameForSaveAs_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetNewSegmentNameForSaveAs_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetNewSegmentNameForSaveAs_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_ValidateSingleSegment_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_ValidateSingleSegment_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_ValidateSingleSegment_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetValidateDetail_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetValidateDetail_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetValidateDetail_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_SwapAuthoringSegmentIds_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_SwapAuthoringSegmentIds_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_SwapAuthoringSegmentIds_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentIdByScoringJobId_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentIdByScoringJobId_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentIdByScoringJobId_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_FastScoreSegment_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_FastScoreSegment_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_FastScoreSegment_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_FastScoreResultAggregate_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_FastScoreResultAggregate_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_FastScoreResultAggregate_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentPropertyPack_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentPropertyPack_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_GetSegmentPropertyPack_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_AddSegmentPropertyPackProperty_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_AddSegmentPropertyPackProperty_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_AddSegmentPropertyPackProperty_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_ExportSegmentPack_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_ExportSegmentPack_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRuleSegment_ExportSegmentPack_ServerFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" />
+      <xsd:import schemaLocation="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Model" />
+      <xsd:import schemaLocation="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+      <xsd:import schemaLocation="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.AudienceIntelligenceService.FastScoringService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IRuleSegment_PublishSegment_InputMessage">
+    <wsdl:part name="parameters" element="tns:PublishSegment" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_PublishSegment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PublishSegmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_PublishSegment_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q1:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentTypeById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSegmentTypeById" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentTypeById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSegmentTypeByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentTypeById_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q2:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_Add_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_Add_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_Add_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q3:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_Delete_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q4:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetAllFrequencyTypeModel_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFrequencyTypeModel" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetAllFrequencyTypeModel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFrequencyTypeModelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetAllFrequencyTypeModel_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q5:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetAllSegments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSegments" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetAllSegments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSegmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetAllSegments_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q6:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetById" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetById_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q7:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentBaseSimpleById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSegmentBaseSimpleById" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentBaseSimpleById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSegmentBaseSimpleByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentBaseSimpleById_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q8:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetExpirationTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExpirationTime" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetExpirationTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExpirationTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetExpirationTime_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q9:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_UpdatePublishStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePublishStatus" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_UpdatePublishStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePublishStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_UpdatePublishStatus_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q10:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetDataTableById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataTableById" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetDataTableById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataTableByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetDataTableById_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q11:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetExportString_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExportString" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetExportString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExportStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetExportString_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q12:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetExportStringWithoughValidation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExportStringWithoughValidation" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetExportStringWithoughValidation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExportStringWithoughValidationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetExportStringWithoughValidation_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q13:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetExportStringArray_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExportStringArray" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetExportStringArray_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExportStringArrayResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetExportStringArray_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q14:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetOwnerAndSharedInSegments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOwnerAndSharedInSegments" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetOwnerAndSharedInSegments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOwnerAndSharedInSegmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetOwnerAndSharedInSegments_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q15:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetPublishedSegments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPublishedSegments" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetPublishedSegments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPublishedSegmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetPublishedSegments_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q16:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentsByProjectId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSegmentsByProjectId" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentsByProjectId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSegmentsByProjectIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentsByProjectId_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q17:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentsForPageSharedOutStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSegmentsForPageSharedOutStatus" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentsForPageSharedOutStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSegmentsForPageSharedOutStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentsForPageSharedOutStatus_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q18:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentsForPageSharedOutUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSegmentsForPageSharedOutUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentsForPageSharedOutUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSegmentsForPageSharedOutUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentsForPageSharedOutUpdate_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q19:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSharedInSegments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSharedInSegments" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSharedInSegments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSharedInSegmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSharedInSegments_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q20:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_IsIncludeDerivedAttributeInSegment_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsIncludeDerivedAttributeInSegment" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_IsIncludeDerivedAttributeInSegment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsIncludeDerivedAttributeInSegmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_IsIncludeDerivedAttributeInSegment_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q21:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_IsXmlFormatWell_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsXmlFormatWell" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_IsXmlFormatWell_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsXmlFormatWellResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_IsXmlFormatWell_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q22:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_ShareInSegment_InputMessage">
+    <wsdl:part name="parameters" element="tns:ShareInSegment" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_ShareInSegment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ShareInSegmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_ShareInSegment_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q23:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_ShareOutSegment_InputMessage">
+    <wsdl:part name="parameters" element="tns:ShareOutSegment" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_ShareOutSegment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ShareOutSegmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_ShareOutSegment_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q24:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_Update_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_Update_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_Update_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q25:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetNewSegmentNameForSaveAs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewSegmentNameForSaveAs" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetNewSegmentNameForSaveAs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewSegmentNameForSaveAsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetNewSegmentNameForSaveAs_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q26:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_ValidateSingleSegment_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateSingleSegment" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_ValidateSingleSegment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateSingleSegmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_ValidateSingleSegment_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q27="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q27:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetValidateDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidateDetail" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetValidateDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidateDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetValidateDetail_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q28="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q28:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_SwapAuthoringSegmentIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:SwapAuthoringSegmentIds" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_SwapAuthoringSegmentIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SwapAuthoringSegmentIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_SwapAuthoringSegmentIds_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q29="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q29:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentIdByScoringJobId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSegmentIdByScoringJobId" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentIdByScoringJobId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSegmentIdByScoringJobIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentIdByScoringJobId_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q30="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q30:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_FastScoreSegment_InputMessage">
+    <wsdl:part name="parameters" element="tns:FastScoreSegment" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_FastScoreSegment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FastScoreSegmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_FastScoreSegment_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q31="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q31:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_FastScoreResultAggregate_InputMessage">
+    <wsdl:part name="parameters" element="tns:FastScoreResultAggregate" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_FastScoreResultAggregate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FastScoreResultAggregateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_FastScoreResultAggregate_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q32="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q32:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentPropertyPack_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSegmentPropertyPack" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentPropertyPack_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSegmentPropertyPackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_GetSegmentPropertyPack_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q33="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q33:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_AddSegmentPropertyPackProperty_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSegmentPropertyPackProperty" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_AddSegmentPropertyPackProperty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSegmentPropertyPackPropertyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_AddSegmentPropertyPackProperty_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q34="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q34:ServerFault" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_ExportSegmentPack_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExportSegmentPack" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_ExportSegmentPack_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExportSegmentPackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRuleSegment_ExportSegmentPack_ServerFaultFault_FaultMessage">
+    <wsdl:part xmlns:q35="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Exception" name="detail" element="q35:ServerFault" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="false" name="IRuleSegment">
+    <wsdl:operation name="PublishSegment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/PublishSegment" message="tns:IRuleSegment_PublishSegment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/PublishSegmentResponse" message="tns:IRuleSegment_PublishSegment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/PublishSegmentServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_PublishSegment_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSegmentTypeById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentTypeById" message="tns:IRuleSegment_GetSegmentTypeById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentTypeByIdResponse" message="tns:IRuleSegment_GetSegmentTypeById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentTypeByIdServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetSegmentTypeById_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/Add" message="tns:IRuleSegment_Add_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/AddResponse" message="tns:IRuleSegment_Add_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/AddServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_Add_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/Delete" message="tns:IRuleSegment_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/DeleteResponse" message="tns:IRuleSegment_Delete_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/DeleteServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_Delete_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFrequencyTypeModel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetAllFrequencyTypeModel" message="tns:IRuleSegment_GetAllFrequencyTypeModel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetAllFrequencyTypeModelResponse" message="tns:IRuleSegment_GetAllFrequencyTypeModel_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetAllFrequencyTypeModelServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetAllFrequencyTypeModel_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSegments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetAllSegments" message="tns:IRuleSegment_GetAllSegments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetAllSegmentsResponse" message="tns:IRuleSegment_GetAllSegments_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetAllSegmentsServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetAllSegments_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetById" message="tns:IRuleSegment_GetById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetByIdResponse" message="tns:IRuleSegment_GetById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetByIdServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetById_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSegmentBaseSimpleById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentBaseSimpleById" message="tns:IRuleSegment_GetSegmentBaseSimpleById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentBaseSimpleByIdResponse" message="tns:IRuleSegment_GetSegmentBaseSimpleById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentBaseSimpleByIdServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetSegmentBaseSimpleById_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExpirationTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetExpirationTime" message="tns:IRuleSegment_GetExpirationTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetExpirationTimeResponse" message="tns:IRuleSegment_GetExpirationTime_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetExpirationTimeServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetExpirationTime_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePublishStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/UpdatePublishStatus" message="tns:IRuleSegment_UpdatePublishStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/UpdatePublishStatusResponse" message="tns:IRuleSegment_UpdatePublishStatus_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/UpdatePublishStatusServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_UpdatePublishStatus_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataTableById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetDataTableById" message="tns:IRuleSegment_GetDataTableById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetDataTableByIdResponse" message="tns:IRuleSegment_GetDataTableById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetDataTableByIdServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetDataTableById_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExportString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetExportString" message="tns:IRuleSegment_GetExportString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetExportStringResponse" message="tns:IRuleSegment_GetExportString_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetExportStringServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetExportString_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExportStringWithoughValidation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetExportStringWithoughValidation" message="tns:IRuleSegment_GetExportStringWithoughValidation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetExportStringWithoughValidationResponse" message="tns:IRuleSegment_GetExportStringWithoughValidation_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetExportStringWithoughValidationServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetExportStringWithoughValidation_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExportStringArray">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetExportStringArray" message="tns:IRuleSegment_GetExportStringArray_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetExportStringArrayResponse" message="tns:IRuleSegment_GetExportStringArray_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetExportStringArrayServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetExportStringArray_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOwnerAndSharedInSegments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetOwnerAndSharedInSegments" message="tns:IRuleSegment_GetOwnerAndSharedInSegments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetOwnerAndSharedInSegmentsResponse" message="tns:IRuleSegment_GetOwnerAndSharedInSegments_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetOwnerAndSharedInSegmentsServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetOwnerAndSharedInSegments_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPublishedSegments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetPublishedSegments" message="tns:IRuleSegment_GetPublishedSegments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetPublishedSegmentsResponse" message="tns:IRuleSegment_GetPublishedSegments_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetPublishedSegmentsServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetPublishedSegments_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSegmentsByProjectId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentsByProjectId" message="tns:IRuleSegment_GetSegmentsByProjectId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentsByProjectIdResponse" message="tns:IRuleSegment_GetSegmentsByProjectId_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentsByProjectIdServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetSegmentsByProjectId_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSegmentsForPageSharedOutStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentsForPageSharedOutStatus" message="tns:IRuleSegment_GetSegmentsForPageSharedOutStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentsForPageSharedOutStatusResponse" message="tns:IRuleSegment_GetSegmentsForPageSharedOutStatus_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentsForPageSharedOutStatusServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetSegmentsForPageSharedOutStatus_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSegmentsForPageSharedOutUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentsForPageSharedOutUpdate" message="tns:IRuleSegment_GetSegmentsForPageSharedOutUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentsForPageSharedOutUpdateResponse" message="tns:IRuleSegment_GetSegmentsForPageSharedOutUpdate_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentsForPageSharedOutUpdateServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetSegmentsForPageSharedOutUpdate_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSharedInSegments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetSharedInSegments" message="tns:IRuleSegment_GetSharedInSegments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetSharedInSegmentsResponse" message="tns:IRuleSegment_GetSharedInSegments_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetSharedInSegmentsServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetSharedInSegments_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsIncludeDerivedAttributeInSegment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/IsIncludeDerivedAttributeInSegment" message="tns:IRuleSegment_IsIncludeDerivedAttributeInSegment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/IsIncludeDerivedAttributeInSegmentResponse" message="tns:IRuleSegment_IsIncludeDerivedAttributeInSegment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/IsIncludeDerivedAttributeInSegmentServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_IsIncludeDerivedAttributeInSegment_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsXmlFormatWell">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/IsXmlFormatWell" message="tns:IRuleSegment_IsXmlFormatWell_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/IsXmlFormatWellResponse" message="tns:IRuleSegment_IsXmlFormatWell_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/IsXmlFormatWellServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_IsXmlFormatWell_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ShareInSegment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/ShareInSegment" message="tns:IRuleSegment_ShareInSegment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/ShareInSegmentResponse" message="tns:IRuleSegment_ShareInSegment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/ShareInSegmentServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_ShareInSegment_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ShareOutSegment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/ShareOutSegment" message="tns:IRuleSegment_ShareOutSegment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/ShareOutSegmentResponse" message="tns:IRuleSegment_ShareOutSegment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/ShareOutSegmentServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_ShareOutSegment_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/Update" message="tns:IRuleSegment_Update_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/UpdateResponse" message="tns:IRuleSegment_Update_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/UpdateServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_Update_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewSegmentNameForSaveAs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetNewSegmentNameForSaveAs" message="tns:IRuleSegment_GetNewSegmentNameForSaveAs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetNewSegmentNameForSaveAsResponse" message="tns:IRuleSegment_GetNewSegmentNameForSaveAs_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetNewSegmentNameForSaveAsServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetNewSegmentNameForSaveAs_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateSingleSegment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/ValidateSingleSegment" message="tns:IRuleSegment_ValidateSingleSegment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/ValidateSingleSegmentResponse" message="tns:IRuleSegment_ValidateSingleSegment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/ValidateSingleSegmentServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_ValidateSingleSegment_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValidateDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetValidateDetail" message="tns:IRuleSegment_GetValidateDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetValidateDetailResponse" message="tns:IRuleSegment_GetValidateDetail_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetValidateDetailServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetValidateDetail_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SwapAuthoringSegmentIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/SwapAuthoringSegmentIds" message="tns:IRuleSegment_SwapAuthoringSegmentIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/SwapAuthoringSegmentIdsResponse" message="tns:IRuleSegment_SwapAuthoringSegmentIds_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/SwapAuthoringSegmentIdsServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_SwapAuthoringSegmentIds_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSegmentIdByScoringJobId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentIdByScoringJobId" message="tns:IRuleSegment_GetSegmentIdByScoringJobId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentIdByScoringJobIdResponse" message="tns:IRuleSegment_GetSegmentIdByScoringJobId_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentIdByScoringJobIdServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetSegmentIdByScoringJobId_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FastScoreSegment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/FastScoreSegment" message="tns:IRuleSegment_FastScoreSegment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/FastScoreSegmentResponse" message="tns:IRuleSegment_FastScoreSegment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/FastScoreSegmentServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_FastScoreSegment_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FastScoreResultAggregate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/FastScoreResultAggregate" message="tns:IRuleSegment_FastScoreResultAggregate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/FastScoreResultAggregateResponse" message="tns:IRuleSegment_FastScoreResultAggregate_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/FastScoreResultAggregateServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_FastScoreResultAggregate_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSegmentPropertyPack">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentPropertyPack" message="tns:IRuleSegment_GetSegmentPropertyPack_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentPropertyPackResponse" message="tns:IRuleSegment_GetSegmentPropertyPack_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/GetSegmentPropertyPackServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_GetSegmentPropertyPack_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSegmentPropertyPackProperty">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/AddSegmentPropertyPackProperty" message="tns:IRuleSegment_AddSegmentPropertyPackProperty_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/AddSegmentPropertyPackPropertyResponse" message="tns:IRuleSegment_AddSegmentPropertyPackProperty_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/AddSegmentPropertyPackPropertyServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_AddSegmentPropertyPackProperty_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExportSegmentPack">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRuleSegment/ExportSegmentPack" message="tns:IRuleSegment_ExportSegmentPack_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRuleSegment/ExportSegmentPackResponse" message="tns:IRuleSegment_ExportSegmentPack_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRuleSegment/ExportSegmentPackServerFaultFault" name="ServerFaultFault" message="tns:IRuleSegment_ExportSegmentPack_ServerFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSHttpBinding_IRuleSegment" type="tns:IRuleSegment">
+    <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PublishSegment">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/PublishSegment" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_PublishSegment_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_PublishSegment_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_PublishSegment_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSegmentTypeById">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetSegmentTypeById" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentTypeById_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentTypeById_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentTypeById_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/Add" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_Add_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_Add_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_Add_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/Delete" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_Delete_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_Delete_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_Delete_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFrequencyTypeModel">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetAllFrequencyTypeModel" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetAllFrequencyTypeModel_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetAllFrequencyTypeModel_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetAllFrequencyTypeModel_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSegments">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetAllSegments" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetAllSegments_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetAllSegments_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetAllSegments_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetById">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetById" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetById_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetById_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetById_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSegmentBaseSimpleById">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetSegmentBaseSimpleById" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentBaseSimpleById_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentBaseSimpleById_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentBaseSimpleById_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetExpirationTime">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetExpirationTime" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetExpirationTime_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetExpirationTime_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetExpirationTime_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePublishStatus">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/UpdatePublishStatus" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_UpdatePublishStatus_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_UpdatePublishStatus_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_UpdatePublishStatus_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataTableById">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetDataTableById" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetDataTableById_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetDataTableById_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetDataTableById_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetExportString">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetExportString" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetExportString_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetExportString_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetExportString_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetExportStringWithoughValidation">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetExportStringWithoughValidation" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetExportStringWithoughValidation_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetExportStringWithoughValidation_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetExportStringWithoughValidation_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetExportStringArray">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetExportStringArray" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetExportStringArray_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetExportStringArray_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetExportStringArray_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOwnerAndSharedInSegments">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetOwnerAndSharedInSegments" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetOwnerAndSharedInSegments_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetOwnerAndSharedInSegments_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetOwnerAndSharedInSegments_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublishedSegments">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetPublishedSegments" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetPublishedSegments_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetPublishedSegments_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetPublishedSegments_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSegmentsByProjectId">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetSegmentsByProjectId" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentsByProjectId_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentsByProjectId_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentsByProjectId_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSegmentsForPageSharedOutStatus">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetSegmentsForPageSharedOutStatus" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentsForPageSharedOutStatus_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentsForPageSharedOutStatus_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentsForPageSharedOutStatus_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSegmentsForPageSharedOutUpdate">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetSegmentsForPageSharedOutUpdate" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentsForPageSharedOutUpdate_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentsForPageSharedOutUpdate_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentsForPageSharedOutUpdate_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSharedInSegments">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetSharedInSegments" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSharedInSegments_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSharedInSegments_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSharedInSegments_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsIncludeDerivedAttributeInSegment">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/IsIncludeDerivedAttributeInSegment" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_IsIncludeDerivedAttributeInSegment_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_IsIncludeDerivedAttributeInSegment_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_IsIncludeDerivedAttributeInSegment_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsXmlFormatWell">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/IsXmlFormatWell" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_IsXmlFormatWell_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_IsXmlFormatWell_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_IsXmlFormatWell_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ShareInSegment">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/ShareInSegment" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_ShareInSegment_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_ShareInSegment_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_ShareInSegment_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ShareOutSegment">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/ShareOutSegment" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_ShareOutSegment_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_ShareOutSegment_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_ShareOutSegment_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/Update" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_Update_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_Update_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_Update_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewSegmentNameForSaveAs">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetNewSegmentNameForSaveAs" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetNewSegmentNameForSaveAs_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetNewSegmentNameForSaveAs_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetNewSegmentNameForSaveAs_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateSingleSegment">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/ValidateSingleSegment" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_ValidateSingleSegment_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_ValidateSingleSegment_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_ValidateSingleSegment_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetValidateDetail">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetValidateDetail" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetValidateDetail_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetValidateDetail_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetValidateDetail_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SwapAuthoringSegmentIds">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/SwapAuthoringSegmentIds" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_SwapAuthoringSegmentIds_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_SwapAuthoringSegmentIds_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_SwapAuthoringSegmentIds_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSegmentIdByScoringJobId">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetSegmentIdByScoringJobId" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentIdByScoringJobId_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentIdByScoringJobId_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentIdByScoringJobId_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FastScoreSegment">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/FastScoreSegment" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_FastScoreSegment_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_FastScoreSegment_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_FastScoreSegment_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FastScoreResultAggregate">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/FastScoreResultAggregate" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_FastScoreResultAggregate_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_FastScoreResultAggregate_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_FastScoreResultAggregate_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSegmentPropertyPack">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/GetSegmentPropertyPack" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentPropertyPack_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentPropertyPack_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_GetSegmentPropertyPack_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddSegmentPropertyPackProperty">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/AddSegmentPropertyPackProperty" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_AddSegmentPropertyPackProperty_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_AddSegmentPropertyPackProperty_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_AddSegmentPropertyPackProperty_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ExportSegmentPack">
+      <soap12:operation soapAction="http://tempuri.org/IRuleSegment/ExportSegmentPack" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_ExportSegmentPack_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_ExportSegmentPack_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ServerFaultFault">
+        <wsp:PolicyReference URI="#WSHttpBinding_IRuleSegment_ExportSegmentPack_ServerFaultFault_Fault" />
+        <soap12:fault use="literal" name="ServerFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RuleSegmentManager">
+    <wsdl:port name="WSHttpBinding_IRuleSegment" binding="tns:WSHttpBinding_IRuleSegment">
+      <soap12:address location="http://apc-rowa-v1/WinService/RuleSegmentManager" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://apc-rowa-v1/WinService/RuleSegmentManager</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>idsswtt@fareast.corp.microsoft.com</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{A305A028-312F-4150-8DF9-05DC2AB2991B}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>LongkeyMusic</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="ObjectListView" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="DevComponents.DotNetBar2" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UltraID3Lib" />
+    <Reference Include="System.Data.SQLite" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="HtmlAgilityPack" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LongkeyMusic.Properties\Resources.cs" />
+    <Compile Include="LongkeyMusic.Properties\Settings.cs" />
+    <Compile Include="LongkeyMusic\AlbumDBMeta.cs" />
+    <Compile Include="LongkeyMusic\AlbumDecoration.cs" />
+    <Compile Include="LongkeyMusic\AlbumFactory.cs" />
+    <Compile Include="LongkeyMusic\AlbumMeta.cs" />
+    <Compile Include="LongkeyMusic\AlbumMetaDownloader.cs" />
+    <Compile Include="LongkeyMusic\AlbumQueueDownloadManager.cs" />
+    <Compile Include="LongkeyMusic\DataAndUIMaster.cs" />
+    <Compile Include="LongkeyMusic\DeleteConfirmBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LongkeyMusic\DownloadFinishToolTipForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LongkeyMusic\DownloadManager.cs" />
+    <Compile Include="LongkeyMusic\HttpPostHelper.cs" />
+    <Compile Include="LongkeyMusic\IObservable.cs" />
+    <Compile Include="LongkeyMusic\IObserver.cs" />
+    <Compile Include="LongkeyMusic\LongkeyMusicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LongkeyMusic\MetaDataListView.cs" />
+    <Compile Include="LongkeyMusic\MP3Editor.cs" />
+    <Compile Include="LongkeyMusic\MP3Lyris.cs" />
+    <Compile Include="LongkeyMusic\ObservableMeta.cs" />
+    <Compile Include="LongkeyMusic\Preference.cs" />
+    <Compile Include="LongkeyMusic\Program.cs" />
+    <Compile Include="LongkeyMusic\RebuildList.cs" />
+    <Compile Include="LongkeyMusic\RefreshAlbumDetail.cs" />
+    <Compile Include="LongkeyMusic\RefreshListRow.cs" />
+    <Compile Include="LongkeyMusic\ResetDownloadingAlbum.cs" />
+    <Compile Include="LongkeyMusic\SetAlbumHandler.cs" />
+    <Compile Include="LongkeyMusic\SetBoolHandler.cs" />
+    <Compile Include="LongkeyMusic\SetImageHandler.cs" />
+    <Compile Include="LongkeyMusic\SetIntHandler.cs" />
+    <Compile Include="LongkeyMusic\SetMessageHandler.cs" />
+    <Compile Include="LongkeyMusic\SetPictureBoxCoverPicture.cs" />
+    <Compile Include="LongkeyMusic\SetTwoMessageHandler.cs" />
+    <Compile Include="LongkeyMusic\SongDBMeta.cs" />
+    <Compile Include="LongkeyMusic\SongDownloader.cs" />
+    <Compile Include="LongkeyMusic\SongFactory.cs" />
+    <Compile Include="LongkeyMusic\SongMeta.cs" />
+    <Compile Include="LongkeyMusic\SQLiteDBHelper.cs" />
+    <Compile Include="LongkeyMusic\SQLManager.cs" />
+    <Compile Include="LongkeyMusic\TaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LongkeyMusic\TaskOperationException.cs" />
+    <Compile Include="LongkeyMusic\UpdateManager.cs" />
+    <Compile Include="LongkeyMusic\Util.cs" />
+    <Compile Include="LongkeyMusic\VoidHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="LongkeyMusic.Properties\Resources.resources" />
+    <EmbeddedResource Include="LongkeyMusic\DeleteConfirmBox.resources" />
+    <EmbeddedResource Include="LongkeyMusic\DownloadFinishToolTipForm.resources" />
+    <EmbeddedResource Include="LongkeyMusic\LongkeyMusicForm.resources" />
+    <EmbeddedResource Include="LongkeyMusic\TaskForm.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

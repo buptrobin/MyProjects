@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4165DA16-4ABA-422D-8A55-225349F962A8}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GTMExplorarte</RootNamespace>
+    <AssemblyName>GTMExplorarte</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdClientHelpers, Version=5.5.722.0, Culture=neutral, PublicKeyToken=525de3f31a75c1e8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\AdClientHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="AppAuthentication, Version=5.5.722.0, Culture=neutral, PublicKeyToken=103e372db0aa640d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\AppAuthentication.dll</HintPath>
+    </Reference>
+    <Reference Include="ATCommon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\ATCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="ATHelper, Version=7.0.9229.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\ATHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="ATPlatform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\ATPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Common, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Contract, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="ContractService, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\ContractService.dll</HintPath>
+    </Reference>
+    <Reference Include="DAL, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="DPAPIWrapper, Version=5.5.722.0, Culture=neutral, PublicKeyToken=b7243cfa80efea45, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\DPAPIWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EncodeUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\EncodeUtility.exe</HintPath>
+    </Reference>
+    <Reference Include="Global, Version=5.5.722.0, Culture=neutral, PublicKeyToken=39af04472471504d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Global.dll</HintPath>
+    </Reference>
+    <Reference Include="KeyStorageTool, Version=5.5.722.0, Culture=neutral, PublicKeyToken=026a36d1e2743466, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\KeyStorageTool.exe</HintPath>
+    </Reference>
+    <Reference Include="ManagementServiceProxy, Version=5.5.722.0, Culture=neutral, PublicKeyToken=d542fe36563b7ebf, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\ManagementServiceProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="MetadataServiceClientProxy, Version=7.0.9229.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\MetadataServiceClientProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Diagnostics, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Microsoft.Advertising.BehaviorTargeting.SegmentStudio.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Advertising.BehaviorTargeting.SegmentStudio.SegmentOM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Microsoft.Advertising.BehaviorTargeting.SegmentStudio.SegmentOM.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Advertising.TargetingService.MDSServiceProxy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Microsoft.Advertising.TargetingService.MDSServiceProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.BT.SeMS.Modeling.PredictiveModelPublish, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Microsoft.BT.SeMS.Modeling.PredictiveModelPublish.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.BT.SeMS.ServiceProxy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Microsoft.BT.SeMS.ServiceProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.BT.SeMS.Util, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Microsoft.BT.SeMS.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.BT.SeMS.Util.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Microsoft.BT.SeMS.Util.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Model, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Model.dll</HintPath>
+    </Reference>
+    <Reference Include="PublishSegmentMigrationTool, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\PublishSegmentMigrationTool.exe</HintPath>
+    </Reference>
+    <Reference Include="QueryGenerator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\QueryGenerator.dll</HintPath>
+    </Reference>
+    <Reference Include="SegmentOM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\SegmentOM.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Utilities, Version=5.5.722.0, Culture=neutral, PublicKeyToken=e96ce3a3aa70ffc3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="VcClient, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a56715bef6787129, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference\VcClient.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GTMPerformance\GTMPerformance.csproj">
+      <Project>{D5344AE2-AEA7-4DAD-B547-CBA63CD4CF2A}</Project>
+      <Name>GTMPerformance</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

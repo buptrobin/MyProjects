@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeBTBIDBDeploy", "FakeBTBIDBDeploy.csproj", "{334CC8D2-C432-4120-B1C1-D302F557BFCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{334CC8D2-C432-4120-B1C1-D302F557BFCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{334CC8D2-C432-4120-B1C1-D302F557BFCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{334CC8D2-C432-4120-B1C1-D302F557BFCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{334CC8D2-C432-4120-B1C1-D302F557BFCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

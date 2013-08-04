@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<plan>
+  <tasks>
+    <task market="AU" owner="Ed" segmentname="rule_1" ProductionStatus="Live" SegmentAction="New"/>
+
+    <task market="US" owner="amit" segmentname="BT - US - TV Enthusiasts" ProductionStatus="Live" SegmentAction="Update"/>
+
+    <task market="US" owner="xiaobin" segmentname="BT - US - Flower Shoppers - 20081111 - 10d/1b" ProductionStatus="Test" SegmentAction="Flush"/>
+    <task market="US" owner="huli" segmentname="Custom BT - US - 03 - Without BK data" ProductionStatus="Test" SegmentAction="Flush"/>
+
+  </tasks>
+</plan>

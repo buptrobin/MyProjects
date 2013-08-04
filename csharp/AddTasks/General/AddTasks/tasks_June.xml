@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<plan name="June Deployment 06_02">
+  <tasks>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Agribusiness - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Dia dos Pais - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Pet Lovers - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="DE" owner="oliverde" segmentname="BT - DE - Fahrraeder" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="DE" owner="oliverde" segmentname="BT - DE - Computerdrucker" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="DE" owner="oliverde" segmentname="BT - DE - Waschmittel" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="DE" owner="oliverde" segmentname="BT - DE - DVDs &amp; BluRays" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="DE" owner="oliverde" segmentname="BT - DE - Zeitschriften" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="DE" owner="oliverde" segmentname="BT - DE - Politics Researchers - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="DE" owner="oliverde" segmentname="BT - DE - Football - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="DE" owner="oliverde" segmentname="BT - DE - Television - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="DE" owner="oliverde" segmentname="BT - DE - Culture - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="DE" owner="oliverde" segmentname="BT - DE - Celebrities - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="ES" owner="susansp" segmentname="BT - ES - Inmobiliarias" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="FR" owner="susansp" segmentname="BT - FR - Courts Sejours" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="FR" owner="susansp" segmentname="BT - FR - Etudiants" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="FR" owner="susansp" segmentname="BT - FR - Ordinateurs" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="FR" owner="susansp" segmentname="BT - FR - Pari en Ligne" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="FR" owner="susansp" segmentname="BT - FR - PME/PMI" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="IT" owner="cristianait" segmentname="BT - IT - Viaggi hotel" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="IT" owner="cristianait" segmentname="BT - IT - Viaggi voli" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="JP" owner="marikoJP" segmentname="BT - JP - Sports Enthusiasts" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="JP" owner="marikoJP" segmentname="BT - JP - Personal Care" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Political News Reader" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Diet Enthusiasts" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Hotel Researchers" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Luxury Brand Seekers" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Fashion Enthusiasts - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Beauty Enthusiasts - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Teens - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Eco Friendly Users - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="NL" owner="dilaranl" segmentname="BT - NL - Wellness - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="NL" owner="dilaranl" segmentname="BT - NL - Sporting Goods - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="NL" owner="dilaranl" segmentname="BT - NL - Airfare Tickets - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="NL" owner="dilaranl" segmentname="BT - NL - Cosmetics - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="UK" owner="SybilUK" segmentname="BT - UK - Business travelers" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="US" owner="Ed" segmentname="BT - US - College Financial Planners" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Texas Travelers" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="US" owner="bhaumik" segmentname="CPG Online Effect - US - 08" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="US" owner="huli" segmentname="CPG Online Effect - US - 06" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="US" owner="Ismail" segmentname="Custom BT - US - 37" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="US" owner="Ed" segmentname="Custom BT - US - 36" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="US" owner="Ed" segmentname="Custom BT - US - 38" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="US" owner="Ed" segmentname="Custom BT - US - 39" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="US" owner="Ed" segmentname="Custom BT - US - 40" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="US" owner="woohee" segmentname="Custom BT - US - 41" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="US" owner="xiaobin" segmentname="Custom BT - US - 42" ProductionStatus="Live" SegmentAction="New"/>
+	<task market="US" owner="Ed" segmentname="BT LUX - US - Book Lovers - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - Identity Theft - 20090610 - Test" ProductionStatus="Test" SegmentAction="New"/>
+	<task market="NL" owner="dilaranl" segmentname="BT - NL - Finance Loans - 20090513 - Test" ProductionStatus="Test" SegmentAction="Update"/>
+	<task market="NL" owner="dilaranl" segmentname="BT - NL - Finance Insurance - 20090513 - Test" ProductionStatus="Test" SegmentAction="Update"/>
+	<task market="US" owner="bshepher" segmentname="BT - US - Hotel Seekers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="bshepher" segmentname="BT - US - Airfare Seekers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="bshepher" segmentname="BT - US - Business Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="bshepher" segmentname="BT - US - Car Rental Seekers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="bshepher" segmentname="BT - US - Cruise Seekers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="bshepher" segmentname="BT - US - Family Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="bshepher" segmentname="BT - US - Las Vegas Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="bhaumik" segmentname="BT - US - Mobile Users" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="bhaumik" segmentname="BT - US - Online Circular Seekers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="bhaumik" segmentname="BT - US - Online Power Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="bhaumik" segmentname="BT - US - Smart Phone Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Luxury Car Researchers - 20090116 - 30d/2b" ProductionStatus="Test" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Casas Bahia - Custom" ProductionStatus="Test" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="Custom BT - BR - 01" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Luxury Sports Researchers - 20090116 - 45d/3b" ProductionStatus="Test" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - B2B - 20090213 - 45d/3b" ProductionStatus="Test" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Automoveis-branding" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Carros de Luxo" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Esportes de Luxo" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Imoveis" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Empregos" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Estudantes" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Gravidez &amp; Bebes" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Praticidade na Web" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Socializacao na Web" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Cinefilos" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Functional Organizers - 20090311 - 45d/3b" ProductionStatus="Test" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Insurance Seekers - 20090213 - 30d/2b" ProductionStatus="Test" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Passagens Aereas" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="BR" owner="claudinebr" segmentname="BT - BR - Viagens" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="IT" owner="cristianait" segmentname="BT - IT - Trend telefonini" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="IT " owner="criatianait" segmentname="BT - IT - Insurance policy researchers - 20090408 - 45d/2b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="IT " owner="criatianait" segmentname="BT - IT - Loan researchers - 20090408 - 45d/2b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="IT " owner="criatianait" segmentname="BT - IT - Pet Care - 20090408 - 45d/2b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="CA" owner="Ed" segmentname="BT - CA - Beer Lovers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="CA" owner="Ed" segmentname="BT - CA - Green Enthusiasts" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Adult Education Seekers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Apparel and Shoes Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Asia Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Australian &amp; South Pacific Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Beauty and Fragrance Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Caribbean Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Europe Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Florida Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - GPS Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Hawaii Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Jewelry and Watches Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Los Angeles Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Mexico Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Music Fanatics" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - New York City Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Orlando Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Photo Enthusiasts and Camera Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Pop Music Fans" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Romance Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - South America Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Winter Destination Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Ed" segmentname="BT - US - Book Shoppers - 20090513 - Test" ProductionStatus="Test" SegmentAction="Update"/>
+	<task market="CA" owner="v-gasath" segmentname="BT - CA - Home Buyers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="CA" owner="v-gasath" segmentname="BT - CA - Home D�cor Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="CA" owner="v-gasath" segmentname="BT - CA - Newly Engaged" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - Boat Insurance Researchers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - Motorcycle Insurance Researchers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - California Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - Luxury Travelers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - Appliance Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - Consumer Electronics Researchers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - DVD Enthusiasts" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - Flower Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - Home Decor Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - Home Furnishing Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - Movie Watchers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - Nascar and Beer Buddies" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - Office Supply Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - Online Grocery Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - Personal Investors" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - Sleep Researchers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="v-gasath" segmentname="BT - US - TV Enthusiasts" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="huli" segmentname="Custom BT - US - 33" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="huli" segmentname="Custom BT - US - 34" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="huli" segmentname="Custom BT - US - 35" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="jingzho" segmentname="BT - US - Computer Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="Julie" segmentname="BT - US - Parents" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="leezen" segmentname="CPG Online Effect - US - 09" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="JP" owner="marikoJP" segmentname="BT - JP - Movie Lovers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="JP" owner="marikoJP" segmentname="BT - JP - Music Lovers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="JP" owner="marikoJP" segmentname="BT - JP - Auto Researchers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="JP" owner="marikoJP" segmentname="BT - JP - Consumer Electronics Enthusiasts" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="JP" owner="marikoJP" segmentname="BT - JP - Finance Researchers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="JP" owner="marikoJP" segmentname="BT - JP - Health &amp; Beauty" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="JP" owner="marikoJP" segmentname="BT - JP - Travel Enthusiasts" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="JP" owner="marikoJP" segmentname="BT - JP - Career Seekers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Smart Phones Researcher - 20090311 - 30d/3b" ProductionStatus="Test" SegmentAction="Update"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Computer Researcher" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Electronic Consumers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Innovators" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Mobile Buyers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Entertainment and Celebrity" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - House Managers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Mobile Researcher" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Women Health Researcher" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Airfare Seeker - 20080909 - 21d/4b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Computer Researcher - 20090213 - 30d/2b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Credit Researcher - 20081111 - 21d/3b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Dating - 20081111 - 30d/3b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Electronic Consumers - 20080909 - 30d/3b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Entertainment and Celebrity - 20081111 - 30d/3b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Fashion and Beauty - 20080909 - 30d/3b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - House Managers - 20080909 - 30d/2b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Job Hunters - 20080909 - 21d/3b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Mobile Buyer - 20090213 - 30d/2b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Mobile Researcher - 20090116 - 30d/2b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - New and Expecting Mothers - 20081111 - 45d/3b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - News Researcher - 20080909 - 30d/3b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Online shopper - 20081007 - 30d/3b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Pet Owners - 20090311 - 45d/3b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Student Researcher - 20090116 - 45d/3b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="MX" owner="rogeliomx" segmentname="BT - MX - Women Health Researcher - 20090116 - 45d/2b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="ES" owner="susansp" segmentname="BT - ES - Active Traders - 20090116 - 45d/2b" ProductionStatus="Test" SegmentAction="Update"/>
+	<task market="ES" owner="susansp" segmentname="BT - ES - Insurance Researchers- 20090116 - 30d/2b" ProductionStatus="Test" SegmentAction="Update"/>
+	<task market="ES" owner="susansp" segmentname="BT - ES - Music - 20080909 - 45d/3b" ProductionStatus="Test" SegmentAction="Update"/>
+	<task market="ES" owner="susansp" segmentname="BT - ES - Real Estate - 20090213 - 30d/3b" ProductionStatus="Test" SegmentAction="Update"/>
+	<task market="ES" owner="susansp" segmentname="BT - ES - Musica" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="ES" owner="susansp" segmentname="BT - ES - Environment/Green - 20081111 - 45d/2b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="ES" owner="susansp" segmentname="BT - ES - House Managers - 20081007 - 45d/3b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="ES" owner="susansp" segmentname="BT - ES - New and Expecting Moms- 20081111 - 30d/2b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="ES" owner="susansp" segmentname="BT - ES - Telco/Mobile Communication - 20081007 - 30d/3b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="FR" owner="SybilUK" segmentname="BT - FR - Affluent Users - 20090311- 30d/2b" ProductionStatus="Test" SegmentAction="Update"/>
+	<task market="FR" owner="SybilUK" segmentname="BT - FR - Credit Conso" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="FR" owner="SybilUK" segmentname="BT - FR - E-consommateur" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="FR" owner="SybilUK" segmentname="BT - FR - Equipment Maison" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="FR" owner="SybilUK" segmentname="BT - FR - Finances" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="FR" owner="SybilUK" segmentname="BT - FR - High Tech" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="FR" owner="SybilUK" segmentname="BT - FR - Sante" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="FR" owner="SybilUK" segmentname="BT - FR - SMBO - 20090408 - 45d/2b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="FR" owner="SybilUK" segmentname="BT - FR - Airfare Researchers - 20081111 - 30d/2b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="FR" owner="SybilUK" segmentname="BT - FR - Family Car Researchers - 20081111 - 45d/2b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="FR" owner="SybilUK" segmentname="BT - FR - Insurance Seekers - 20090116 - 30d/2b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="FR" owner="SybilUK" segmentname="BT - FR - Small Car Researchers - 20081111 - 30d/2b" ProductionStatus="Test" SegmentAction="Flush"/>
+	<task market="UK" owner="SybilUK" segmentname="BT - UK - Car Insurance Researchers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="UK" owner="SybilUK" segmentname="BT - UK - High Street Shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="UK" owner="SybilUK" segmentname="BT - UK - Home Buyers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="UK" owner="SybilUK" segmentname="BT - UK - House Managers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="UK" owner="SybilUK" segmentname="BT - UK - House Renovations/DIY" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="UK" owner="SybilUK" segmentname="BT - UK - Job Seekers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="UK" owner="SybilUK" segmentname="BT - UK - MS Office Researchers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="UK" owner="SybilUK" segmentname="BT - UK - Music/Festival Fans" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="UK" owner="SybilUK" segmentname="BT - UK - Online shoppers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="UK" owner="SybilUK" segmentname="BT - UK - Small Car Researchers" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="UK" owner="SybilUK" segmentname="BT - UK - Sports Fans" ProductionStatus="Live" SegmentAction="Update"/>
+	<task market="US" owner="woohee" segmentname="BT - US - Home Chefs" ProductionStatus="Live" SegmentAction="Update"/>
+  </tasks>
+</plan>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.AudienceIntelligenceService.FastScoringService" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Microsoft.Advertising.AudienceIntelligenceService.FastScoringService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ScoreResultAggregate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="UserAgeAggregates" nillable="true" type="tns:ArrayOfUserAgeAggregate" />
+      <xs:element minOccurs="0" name="UserGenderAggregates" nillable="true" type="tns:ArrayOfUserGenderAggregate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScoreResultAggregate" nillable="true" type="tns:ScoreResultAggregate" />
+  <xs:complexType name="ArrayOfUserAgeAggregate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserAgeAggregate" nillable="true" type="tns:UserAgeAggregate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserAgeAggregate" nillable="true" type="tns:ArrayOfUserAgeAggregate" />
+  <xs:complexType name="UserAgeAggregate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaxAge" type="xs:short" />
+      <xs:element minOccurs="0" name="MinAge" type="xs:short" />
+      <xs:element minOccurs="0" name="UserCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserAgeAggregate" nillable="true" type="tns:UserAgeAggregate" />
+  <xs:complexType name="ArrayOfUserGenderAggregate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserGenderAggregate" nillable="true" type="tns:UserGenderAggregate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserGenderAggregate" nillable="true" type="tns:ArrayOfUserGenderAggregate" />
+  <xs:complexType name="UserGenderAggregate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Gender" type="ser:char" />
+      <xs:element minOccurs="0" name="UserCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserGenderAggregate" nillable="true" type="tns:UserGenderAggregate" />
+</xs:schema>

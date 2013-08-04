@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cce473af-684c-4838-9ff3-cdbf72220ca8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://apc-rowa-v1/WinService/RuleSegmentManager" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RuleSegmentManager.disco" MetadataType="Disco" ID="6679e85d-609a-4493-b15a-57f86b94672d" SourceId="1" SourceUrl="http://apc-rowa-v1/WinService/RuleSegmentManager?disco" />
+    <MetadataFile FileName="RuleSegmentManager.wsdl" MetadataType="Wsdl" ID="64550192-e38f-4b98-a6e6-cee35b9008b3" SourceId="1" SourceUrl="http://apc-rowa-v1/WinService/RuleSegmentManager?wsdl" />
+    <MetadataFile FileName="RuleSegmentManager.xsd" MetadataType="Schema" ID="b718f15c-5cfe-4895-bbcc-f23fde6f3aad" SourceId="1" SourceUrl="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd3" />
+    <MetadataFile FileName="RuleSegmentManager1.xsd" MetadataType="Schema" ID="72eb9c9f-9357-44a1-81d0-3c49f6cf9d2c" SourceId="1" SourceUrl="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd2" />
+    <MetadataFile FileName="RuleSegmentManager2.xsd" MetadataType="Schema" ID="8cc9f76c-6b51-44c7-aa03-ffac22720a9d" SourceId="1" SourceUrl="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd1" />
+    <MetadataFile FileName="RuleSegmentManager3.xsd" MetadataType="Schema" ID="bd09b211-04e8-4cec-880f-37eefcfdef22" SourceId="1" SourceUrl="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd0" />
+    <MetadataFile FileName="RuleSegmentManager4.xsd" MetadataType="Schema" ID="33b03caa-0d10-4075-bfb7-866957a636a8" SourceId="1" SourceUrl="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd6" />
+    <MetadataFile FileName="RuleSegmentManager5.xsd" MetadataType="Schema" ID="bc0d67bb-e90f-4f8a-9be6-b3bc6ca1ece3" SourceId="1" SourceUrl="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd5" />
+    <MetadataFile FileName="RuleSegmentManager6.xsd" MetadataType="Schema" ID="e2cb742d-802e-40d3-b2bd-7c11e2809a69" SourceId="1" SourceUrl="http://apc-rowa-v1/WinService/RuleSegmentManager?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
