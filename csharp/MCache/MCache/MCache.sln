@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCache", "MCache\MCache.csproj", "{5D8DE22F-6E15-419C-8B23-3F302B34C970}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCacheTest", "..\MCacheTest\MCacheTest.csproj", "{956ADA06-7FA7-4341-B0E7-BB8610C24210}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D8DE22F-6E15-419C-8B23-3F302B34C970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D8DE22F-6E15-419C-8B23-3F302B34C970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D8DE22F-6E15-419C-8B23-3F302B34C970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D8DE22F-6E15-419C-8B23-3F302B34C970}.Release|Any CPU.Build.0 = Release|Any CPU
+		{956ADA06-7FA7-4341-B0E7-BB8610C24210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{956ADA06-7FA7-4341-B0E7-BB8610C24210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{956ADA06-7FA7-4341-B0E7-BB8610C24210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{956ADA06-7FA7-4341-B0E7-BB8610C24210}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
