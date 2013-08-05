@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CareerCup
 {
-    class Chapt1
+    class Chapt1 : ExamBase
     {
         //1.1
         public bool IsAllCharUnique(string s)
@@ -139,49 +139,119 @@ namespace CareerCup
             }
             M[j, N - 1 - i] = p;
         }
-        static void PrintMatrix(int[,] M, int N)
-        {
-            for (int i1 = 0; i1 < N; i1++)
-            {
-                for (int j1 = 0; j1 < N; j1++)
-                    Console.Write(M[i1, j1] + "\t");
-                Console.WriteLine();
-            }
-        }
+
         public static void Test1_6()
         {
             int[,] M = new int[,] {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
             //{{1, 2, 3,4}, {5,6,7,8}, {9,10,11,12},{13,14,15,16}};
             int N = 3;
             
-            PrintMatrix(M,N);
+            PrintMatrix(M,N,N);
             Console.WriteLine("===================");
             RotateMatrix(M,N);
-            PrintMatrix(M, N);
+            PrintMatrix(M, N, N);
         }
-
 
         //1.7
-        
-
-        #region Assert Methods
-        public static void AssertEqual(string s1, string s2)
+        public static void SetMatrixRowColumnZero(int[,] matrix, int M, int N)
         {
-            if(s1.Equals(s2)) Console.Write("Pass\t"); else Console.Write("Fail\t");
-            Console.WriteLine("s1={0}\ts2={1}",s1,s2);
+            if (matrix == null) return;
+            if (M <= 0 || N <= 0) return;
+            HashSet<int> rows = new HashSet<int>();
+            HashSet<int> columns = new HashSet<int>();
+
+            PrintMatrix(matrix, M, N);
+            for (int i = 0; i < M; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    if (matrix[i, j] == 0)
+                    {
+                        rows.Add(i);
+                        columns.Add(j);
+                    }
+                }
+            }
+
+            foreach (int row in rows)
+            {
+                for (int j = 0; j < N; j++)
+                    matrix[row, j] = 0;
+            }
+
+            foreach (int column in columns)
+            {
+                for (int i = 0; i < M; i++)
+                    matrix[i, column] = 0;
+            }
+            Console.WriteLine("--------------------------");
+            PrintMatrix(matrix, M, N);
+        }
+        public static void SetMatrixRowColumnZero2(int[][] matrix)
+        {
+            if (matrix == null) return;
+            int M = matrix.Length;
+            if (M < 1) return;
+            int N = matrix[0].Length;
+            if (N < 1) return;
+            int[] rows = new int[M];
+            int[] columns = new int[N];
+
+            PrintMatrix(matrix);
+            for (int i = 0; i < M; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    if (matrix[i][j] == 0)
+                    {
+                        rows[i]=1;
+                        columns[j] = 1;
+                    }
+                }
+            }
+
+            foreach (int row in rows)
+            {
+                for (int j = 0; j < N; j++)
+                    matrix[row][j] = 0;
+            }
+
+            foreach (int column in columns)
+            {
+                for (int i = 0; i < M; i++)
+                    matrix[i][column] = 0;
+            }
+            Console.WriteLine("--------------------------");
+            PrintMatrix(matrix);
+        }
+        public static void Test1_7()
+        {
+            int[,] matrix= new int[,]{{1,2,3},{0,5,6},{7,8,9}};
+            SetMatrixRowColumnZero(matrix, 3, 3);
+            
         }
 
-        public static void AssertEqual(bool s1, bool s2)
+        //1.8
+        public static bool IsRotation(string s1, string s2)
         {
-            if (s1.Equals(s2)) Console.Write("Pass\t"); else Console.Write("Fail\t");
-            Console.WriteLine("s1={0}\ts2={1}", s1, s2);
+            if (s1 == null || s2 == null) return false;
+            if (s1.Length != s2.Length) return false;
+            string sa = s1 + s1;
+            return isSubstring(sa, s2);
         }
 
-        public static void AssertEqual(int s1, int s2)
+        private static bool isSubstring(string s1, string s2)
         {
-            if( s1 == s2 ) Console.Write("Pass\t"); else Console.Write("Fail\t");
-            Console.WriteLine("s1={0}\ts2={1}", s1, s2);
+            if (s1 == null || s2 == null) return false;
+            return s1.IndexOf(s2) >= 0;
         }
-        #endregion
+
+        public static void Test1_8()
+        {
+	        AssertEqual(true, IsRotation("abc","bca"));
+            AssertEqual(false, IsRotation("apple", "ppale"));
+        }
+
+
     }
 }

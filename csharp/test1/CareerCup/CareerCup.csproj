@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chapt1.cs" />
+    <Compile Include="Chapt2.cs" />
+    <Compile Include="ExamBase.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="Kata.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

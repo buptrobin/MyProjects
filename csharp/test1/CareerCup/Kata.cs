@@ -23,10 +23,7 @@ public class Kata
         if(num>ar[mid]) return chop_recursive(num, ar, mid+1, end);
         else return chop_recursive(num, ar, begin, mid-1);
     }
-    private static int chop_nonrecursive(int num, int[] ar)
-    {
-
-    }
+    
     public static void Test_Kata2()
     {
         AssertEqual(-1, chop(0, new int[] {}));

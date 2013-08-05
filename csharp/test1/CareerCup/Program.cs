@@ -10,7 +10,8 @@ namespace CareerCup
     {
         static void Main(string[] args)
         {
-            Kata.Test_Kata2();
+            //Kata.Test_Kata2();
+            Chapt2.Test2_1();
             Console.ReadKey();
         }
     }
