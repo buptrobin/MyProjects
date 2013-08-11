@@ -46,6 +46,18 @@ namespace CareerCup
             ss.Push(3);
             ss.Push(4);
             AssertEqual(4, ss.Peek());
+        }
+
+        public static void Test3_4()
+        {
+            var q = new MyQueue();
+            q.Enqueue2(1);
+            q.Enqueue2(2);
+            q.Enqueue2(3);
+            AssertEqual(1, q.Dequeue2());
+            AssertEqual(2, q.Dequeue2());
+            q.Enqueue2(4);
+            AssertEqual(3, q.Dequeue2());
 
         }
     }
@@ -133,6 +145,60 @@ namespace CareerCup
 
             int v = (int)stacks[stackNum - 1].Peek();
             return v;
+        }
+    }
+
+    //3.4
+    public class MyQueue
+    {
+        Stack s1 = new Stack();
+        Stack s2 = new Stack();
+
+        int flag = 1;
+        public void Enqueue(int v)
+        {
+            s1.Push(v);
+        }
+
+
+        public int Dequeue()
+        {
+            if (s1.Count < 1) throw new Exception("Queue is empty");
+            Move(s1, s2);
+            int v = (int)s2.Pop();
+            Move(s2, s1);
+
+            return v;
+        }
+
+        public void Enqueue2(int v)
+        {
+            if (flag != 1)
+            {
+                Move(s2, s1);
+                flag = 1;
+            }
+
+            s1.Push(v);
+        }
+
+        public int Dequeue2()
+        {
+            if (flag == 1)
+            {
+                Move(s1, s2);
+                flag = 2;
+            }
+
+            return (int)s2.Pop();
+        }
+
+        private void Move(Stack from, Stack to)
+        {
+            while (from.Count>0)
+            {
+                to.Push(from.Pop());
+            }
         }
     }
 }
