@@ -48,7 +48,7 @@ namespace CareerCup
             AssertEqual(4, ss.Peek());
         }
 
-        public static void Test3_4()
+        public static void Test3_5()
         {
             var q = new MyQueue();
             q.Enqueue2(1);
@@ -60,7 +60,43 @@ namespace CareerCup
             AssertEqual(3, q.Dequeue2());
 
         }
+
+        //3.6
+        public static void SortStack(Stack stack)
+        {
+            Stack tmp = new Stack();
+
+            while (stack.Count > 0)
+            {
+                int t = (int)stack.Pop();
+                while (tmp.Count > 0 && (int)tmp.Peek() > t)
+                {
+                    stack.Push(tmp.Pop());
+                }
+                tmp.Push(t);
+            }
+
+            while(tmp.Count>0)
+                stack.Push(tmp.Pop());
+
+        }
+        public static void Test3_6()
+        {
+            var stack = new Stack();
+            stack.Push(1);
+            stack.Push(3);
+            stack.Push(2);
+            stack.Push(0);
+            PrintStack(stack);
+
+            SortStack(stack);
+
+            PrintStack(stack);
+        }
+
     }
+
+
 
     //3.2
     public class StackWithMin
@@ -148,7 +184,7 @@ namespace CareerCup
         }
     }
 
-    //3.4
+    //3.5
     public class MyQueue
     {
         Stack s1 = new Stack();
@@ -201,4 +237,6 @@ namespace CareerCup
             }
         }
     }
+
+
 }
