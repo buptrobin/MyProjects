@@ -10,6 +10,7 @@ namespace CareerCup
 
     class Chapt4 : ExamBase
     {
+        //6.1
         private bool CheckTree(TreeNode node, int depth, ref int min, ref int max)
         {
             if (node == null) throw new Exception("Incorrect input, node cannnot be null");
@@ -59,7 +60,23 @@ namespace CareerCup
             return (node.left == null && node.right == null);
         }
 
+        public int MaxDepth(TreeNode root)
+        {
+            if (root == null) return 0;
+            return 1 + Math.Max(this.MaxDepth(root.left), this.MaxDepth(root.right));
+        }
+        public int MinDepth(TreeNode root)
+        {
+            if (root == null) return 0;
+            return 1 + Math.Min(this.MinDepth(root.left), this.MinDepth(root.right));
+        }
 
+        public bool IsBalanced(TreeNode root)
+        {
+            return (MaxDepth(root) - this.MinDepth(root) <= 1);
+            
+            
+        }
 
     }
 
