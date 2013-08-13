@@ -42,5 +42,43 @@ namespace CareerCup
             PrintLinkedList(header);
         }
 
+        //2.2
+        public static LinkedListNode NthToLast(LinkedListNode header, int N)
+        {
+            if (header == null) return null;
+	        if(N<=0) throw new Exception("Incorrect Argument!");
+	
+	        LinkedListNode first = header;
+	        LinkedListNode second = header;
+	
+	        for(int i=1;i<N;i++)
+	        {
+		        if(first!=null) first = first.next;
+		        else
+			        return null;
+	        }
+	
+	        while(first.next != null)
+	        {
+		        first = first.next;
+		        second = second.next;
+	        }
+	
+	        return second;
+        }
+        public static void Test2_2()
+        {
+            LinkedListNode header = new LinkedListNode(1);
+            LinkedListNode ret = NthToLast(header, 1);
+            AssertEqual(1, ret.value);
+
+            header.Add(2).Add(3).Add(4);
+
+            ret = NthToLast(header, 1);
+            AssertEqual(4, ret.value);
+            ret = NthToLast(header, 4);
+            AssertEqual(1, ret.value);
+        }
     }
+
 }
