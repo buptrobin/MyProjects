@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace CareerCup
 {
+    using System.Collections;
+
     class ExamBase
     {
         #region Assert Methods
@@ -64,6 +66,23 @@ namespace CareerCup
             }
             Console.WriteLine("NULL");
         }        
+
+        public static void PrintStack(Stack s)
+        {
+            int count = s.Count;
+            if (s == null || s.Count < 1) return;
+            Stack tmp = new Stack();
+            while(s.Count>0)
+            {
+                Console.Write("{0}\t", (int)s.Peek());
+                tmp.Push(s.Pop());
+            }
+
+            Console.WriteLine();
+
+            while (tmp.Count > 0)
+                s.Push(tmp.Pop());
+        }
         #endregion
     }
 }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JZ", "JZ\JZ.csproj", "{E720
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerCup", "CareerCup\CareerCup.csproj", "{AE71CDD1-399B-4E48-B725-2957979DA849}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpClient", "HttpClient\HttpClient.csproj", "{DCD36E07-2637-4C0D-9966-427355D7CB4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{AE71CDD1-399B-4E48-B725-2957979DA849}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE71CDD1-399B-4E48-B725-2957979DA849}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE71CDD1-399B-4E48-B725-2957979DA849}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCD36E07-2637-4C0D-9966-427355D7CB4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCD36E07-2637-4C0D-9966-427355D7CB4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCD36E07-2637-4C0D-9966-427355D7CB4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCD36E07-2637-4C0D-9966-427355D7CB4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

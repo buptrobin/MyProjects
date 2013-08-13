@@ -17,7 +17,7 @@ namespace ScrapeGet
         //private static string requestTemplate = @"[augments:%22%5bAdService%20AdUnitID=\%22933\%22%20PropertyID=\%223682\%22%20SupportedExtensionsMask=\%22512\%22%20SourceSchema=\%22AdService.Ads(1.9)\%22%20RAISEnabled=\%221\%22%20RAISTypes=\%2231\%22%20Referer=\%22cnrnrtuning4.com\%22%20AbTestNum=\%224845\%22%20ReqVersion=\%222\%22%20AdLanguage=\%22zh\%22%20WebSiteCountry=\%22CN\%22%20ABConfigOverrides=\%22<AbTestOverrideData%20AbTestId='0'%20AbTestVersion='0'><AbTestParam%20Key='326'%20Type='3'>1</AbTestParam><AbTestParam%20Key='328'%20Type='2'>100</AbTestParam><AbTestParam Key='233'%20Type='5'>1</AbTestParam></AbTestOverrideData>\%22%20AdCenterEnabled=\%221\%22%5d%5bATLA%20Timeout=\%225000\%22%5d%22|variantconstraint:%22mkt:zh-CN%26truemkt:zh-CN%26brand:kiev%26workflow:BingFirstPageResults%26traffictype:Test_Regression%22|form:%22QBLH%22|workflow:%22BingFirstPageResults%22]";
         private static string requestTemplate = @"[augments:%22%5bAdService%20AdUnitID=\%22933\%22%20PropertyID=\%223682\%22%20SupportedExtensionsMask=\%22512\%22%20SourceSchema=\%22AdService.Ads(1.9)\%22%20RAISEnabled=\%221\%22%20RAISTypes=\%2231\%22%20Referer=\%22cnrnrtuning7.com\%22%20AbTestNum=\%224845\%22%20ReqVersion=\%222\%22%20AdLanguage=\%22zh\%22%20WebSiteCountry=\%22CN\%22%20ABConfigOverrides=\%22<AbTestOverrideData%20AbTestId='0'%20AbTestVersion='0'><AbTestParam%20Key='267'%20Type='5'>0.0045</AbTestParam><AbTestParam%20Key='270'%20Type='5'>0.0045</AbTestParam><AbTestParam%20Key='326'%20Type='3'>1</AbTestParam><AbTestParam%20Key='328'%20Type='2'>100</AbTestParam><AbTestParam%20Key='233'%20Type='5'>1</AbTestParam><AbTestParam%20Key='217'%20Type='5'>0.22</AbTestParam><AbTestParam%20Key='218'%20Type='5'>0.2</AbTestParam><AbTestParam%20Key='264'%20Type='5'>2200</AbTestParam><AbTestParam%20Key='399'%20Type='5'>0.1</AbTestParam></AbTestOverrideData>\%22%20AdCenterEnabled=\%221\%22%5d%5bATLA%20Timeout=\%225000\%22%5d%22|variantconstraint:%22mkt:zh-CN%26truemkt:zh-CN%26brand:kiev%26workflow:BingFirstPageResults%26traffictype:Test_Regression%22|form:%22QBLH%22|workflow:%22BingFirstPageResults%22]";
 
-        private static string DEFAULT_INPUT = @"D:\work\msm\scrapeget\bak\zh_cn_query_distinct000.txt";//".\scrape_inpput.txt";
+        private static string DEFAULT_INPUT = @"D:\work\tmp\MSM\scrape\zh_cn_query_distinct.txt";// @"D:\work\msm\scrapeget\bak\zh_cn_query_distinct000.txt";//".\scrape_inpput.txt";
 
         private static string DEFAULT_OUTPUT = @".\scrape_output.txt";
 
@@ -55,8 +55,8 @@ namespace ScrapeGet
                 int rguidbegin = content.IndexOf("RGuid");
                 if (rguidbegin > 0)
                 {
-                    int rguidend = content.IndexOf("\"", rguidbegin);
-                    if (rguidend > 0) rguid = content.Substring(rguidbegin - 10, rguidend - rguidbegin);
+                    int rguidend = content.IndexOf("\"", rguidbegin+11);
+                    if (rguidend > 0) rguid = content.Substring(rguidbegin + 10, rguidend - rguidbegin - 10);
                 }
 
                 string server = "NoServer";
