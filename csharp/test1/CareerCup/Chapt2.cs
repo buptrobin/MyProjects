@@ -44,7 +44,6 @@ namespace CareerCup
             PrintLinkedList(header);
         }
 
-<<<<<<< HEAD
         //2.2
         public static LinkedListNode NthToLast(LinkedListNode header, int N)
         {
@@ -82,7 +81,7 @@ namespace CareerCup
             ret = NthToLast(header, 4);
             AssertEqual(1, ret.value);
         }
-=======
+
         //2.4
         public static LinkedListNode AddLink(LinkedListNode L1, LinkedListNode L2)
         {
@@ -201,8 +200,6 @@ namespace CareerCup
             Console.WriteLine(ret.value);
 
         }
-
->>>>>>> daa5ab961e002709d1a599c3d6d06305a8039082
     }
 
 }

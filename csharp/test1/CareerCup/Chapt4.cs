@@ -10,7 +10,7 @@ namespace CareerCup
 
     class Chapt4 : ExamBase
     {
-        //6.1
+#region 4.1
         private bool CheckTree(TreeNode node, int depth, ref int min, ref int max)
         {
             if (node == null) throw new Exception("Incorrect input, node cannnot be null");
@@ -74,16 +74,50 @@ namespace CareerCup
         public bool IsBalanced(TreeNode root)
         {
             return (MaxDepth(root) - this.MinDepth(root) <= 1);
-            
-            
+
+
+        }
+#endregion
+
+        #region 4.3
+        public TreeNode ArrayToTree(int[] ar)
+        {
+	        if(ar==null || ar.Length<1) return null;
+	        TreeNode root = new TreeNode();
+
+	        ConvertToTree(ar, root, 0, ar.Length-1);
+
+	        return root;
         }
 
+
+        public void ConvertToTree(int[] ar, TreeNode root, int start, int end)
+        {
+	        if(start == end) {
+		        root.value = ar[start];
+		        root.left=null;
+		        root.right=null;
+		        return;
+	        }
+
+	        int mid = (start+end)/2;
+	        root.value = ar[mid];
+	        if(start<mid){
+		        root.left = new TreeNode();
+		        ConvertToTree(ar, root.left, start, mid-1);
+	        }
+	        if(end>mid){
+		        root.right = new TreeNode();
+		        ConvertToTree(ar, root.right, mid+1, end);
+	        }
+        }
+
+        public static void Test4_3()
+        {
+            
+        }
+        #endregion
     }
 
-    public class TreeNode
-    {
-        public int value;
-        public TreeNode left;
-        public TreeNode right;
-    }
+
 }

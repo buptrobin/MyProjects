@@ -83,6 +83,29 @@ namespace CareerCup
             while (tmp.Count > 0)
                 s.Push(tmp.Pop());
         }
+
+        public static void PrintTree(TreeNode root)
+        {
+            if (root == null) return;
+            List<TreeNode> list = new List<TreeNode>();
+            list.Add(root);
+            int start = 0;
+
+            bool hasmore = true;
+            while (true)
+            {
+                int end = list.Count - 1;
+                for (int i = start; i <= end; i++)
+                {
+                    TreeNode node = list[i];
+                    Console.Write(node.value+"\t");
+                    if(node.left != null) list.Add(node.left);
+                    if(node.right!=null) list.Add(node.right);
+                }
+                Console.WriteLine();
+                if (end == list.Count - 1) break;
+            }
+        }
         #endregion
     }
 }
