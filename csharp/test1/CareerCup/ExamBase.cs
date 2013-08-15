@@ -104,6 +104,7 @@ namespace CareerCup
                 }
                 Console.WriteLine();
                 if (end == list.Count - 1) break;
+                start = end + 1;
             }
         }
         #endregion

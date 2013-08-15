@@ -90,6 +90,15 @@ namespace CareerCup
 	        return root;
         }
 
+        public TreeNode ConvertToTree2(int[] ar, int start, int end)
+        {
+            if (start > end) return null;
+            int mid = (start + end)/2;
+            TreeNode node = new TreeNode(mid);
+            node.left = ConvertToTree2(ar, start, mid - 1);
+            node.right = ConvertToTree2(ar, mid + 1, end);
+            return node;
+        }
 
         public void ConvertToTree(int[] ar, TreeNode root, int start, int end)
         {
@@ -114,7 +123,83 @@ namespace CareerCup
 
         public static void Test4_3()
         {
-            
+            int[] ar = new int[]{1,2,3};
+            Chapt4 cp = new Chapt4();
+            TreeNode root = cp.ArrayToTree(ar);
+            PrintTree(root);
+        }
+        #endregion
+
+        #region 4.5
+        public TreeNode Succeed(TreeNode node)
+        {
+            if (node == null) return null;
+            if (node.right != null)
+            {
+                TreeNode sr = node.right;
+                while (sr.left != null) sr = sr.left;
+                return sr;
+            }
+            else
+            {
+                TreeNode parent = node.parent;
+                if (parent == null) return null;
+
+                if (parent.left == node) return parent;
+                if (parent.right == node)
+                {
+                    TreeNode grandp = parent.parent;
+                    if (grandp == null) return null;
+                    return grandp;
+                }
+                return null;
+            }
+        }
+        #endregion
+
+        #region 4.6
+
+        public TreeNode CommonAncestor(TreeNode n1, TreeNode n2)
+        {
+            if (n1 == null || n2 == null) return null;
+            int dep1 = GetDepth(n1);
+            int dep2 = GetDepth(n2);
+            if (dep1 > dep2) n1 = GoUp(n1, dep1 - dep2);
+            if (dep2 > dep1) n2 = GoUp(n2, dep2 - dep1);
+
+            while (n1 != n2)
+            {
+                n1 = n1.parent;
+                n2 = n2.parent;
+            }
+
+            return n1;
+        }
+
+        public int GetDepth(TreeNode node)
+        {
+            if (node == null) return 0;
+            int d = 0;
+            while (node.parent != null)
+            {
+                d++;
+                node = node.parent;
+            }
+
+            return d;
+        }
+
+        public TreeNode GoUp(TreeNode node, int steps)
+        {
+            if (node == null || steps < 1) throw new ArgumentException("inpust incorrect.");
+            while (steps > 0)
+            {
+                if (node == null) throw new ArgumentException("the steps incorrect");
+                steps--;
+                node = node.parent;
+            }
+
+            return node;
         }
         #endregion
     }
