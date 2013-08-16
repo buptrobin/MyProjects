@@ -202,6 +202,65 @@ namespace CareerCup
             return node;
         }
         #endregion
+
+        #region 4.7
+        public bool IsSubTree(TreeNode t1, TreeNode t2)
+        {
+            if (t1 == null || t2 == null) return false;
+            if (t1.value == t2.value)
+            {
+                if (EqualTree(t1, t2)) return true;
+            }
+
+            return (IsSubTree(t1.left, t2) || IsSubTree(t1.right, t2));
+        }
+
+        public bool EqualTree(TreeNode t1, TreeNode t2)
+        {
+            if (t1 == null && t2 == null) return true;
+            if (t1 == null || t2 == null) return false;
+            if (t1.value != t2.value) return false;
+
+            return (EqualTree(t1.left, t2.left) && EqualTree(t1.right, t2.right));
+        }
+        #endregion
+
+        #region 4.8
+        public void PathSum(TreeNode root, int sum)
+        {
+            if (root == null) return;
+            List<int> path = new List<int>();
+
+            FindPath(root, sum, path);
+        }
+
+        public void FindPath(TreeNode t, int sum, List<int> currPath)
+        {
+            if (t == null || currPath == null) throw new ArgumentException("Input incorrect");
+
+            CheckAndPrint(currPath, t, sum);
+
+            currPath.Add(t.value);
+            FindPath(t.left, sum, currPath);
+            FindPath(t.right, sum, currPath);
+        }
+
+        public void CheckAndPrint(List<int> currPath, TreeNode t, int sum)
+        {
+	        int pathsum = t.value;
+	        for(int i=currPath.Count-1;i>=0;i--)
+	        {
+		        pathsum+=currPath[i];
+	            if (pathsum == sum) PrintPath(currPath, i);
+	        }
+        }
+        public void PrintPath(List<int> path, int start)
+        {
+            for(int i = start; i<path.Count;i++)
+                Console.Write(path[i]);
+            Console.WriteLine();
+        }
+        #endregion
     }
 
 
