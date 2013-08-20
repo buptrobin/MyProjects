@@ -45,6 +45,7 @@
     <Compile Include="Chapt2.cs" />
     <Compile Include="Chapt3.cs" />
     <Compile Include="Chapt4.cs" />
+    <Compile Include="Chapt5.cs" />
     <Compile Include="ExamBase.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Kata.cs" />
