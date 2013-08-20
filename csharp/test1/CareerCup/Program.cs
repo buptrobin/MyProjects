@@ -11,7 +11,7 @@ namespace CareerCup
         static void Main(string[] args)
         {
             //Kata.Test_Kata2();
-            Chapt4.Test4_3();
+            Chapt5.Test5_7();
             Console.ReadKey();
         }
     }
