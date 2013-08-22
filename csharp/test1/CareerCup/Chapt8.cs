@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,6 +99,95 @@ namespace CareerCup
             var list = Perm("121");
             for (int i = 0; i < list.Count;i++ )
                 Console.WriteLine(list[i]);
+        }
+
+        //shuffling cards
+        public static int ShufflingCards(int n)
+        {
+            if (n < 0) throw new ArgumentException("n should >0");
+            if (n == 0) return 0;
+
+            int rounds = 0;
+            List<int> cardInHand = new List<int>();
+            InitCards(cardInHand, n);
+
+            while (true)
+            {
+                ShuffOneRound(cardInHand);
+                rounds++;
+                if (CardInOrder(cardInHand)) break;
+            }
+
+            return rounds;
+        }
+
+        private static void InitCards(List<int> cards, int n)
+        {
+	        if(cards==null) throw new ArgumentException("cards should not be null");
+	        if(cards.Count>0) cards.Clear();
+
+	        for(int i=1;i<=n;i++)
+		        cards.Add(i);
+        }
+
+        private static void ShuffOneRound(List<int> cards)
+        {
+	        if(cards==null) throw new ArgumentException("cards should not be null");
+
+	        List<int> cardsInTable = new List<int>();
+
+	        while(cards.Count>0)
+	        {
+		        int first = cards[0];
+		        cardsInTable.Add(first);
+		        cards.RemoveAt(0);
+		        if(cards.Count>0)
+		        {
+			        int second = cards[0];
+			        cards.RemoveAt(0);
+			        cards.Add(second);
+		        }
+	        }
+            //PrintCards(cardsInTable);
+	        foreach(int card in cardsInTable)
+	        {
+		        cards.Add(card);
+	        }
+
+            //PrintCards(cards);
+        }
+        private static bool CardInOrder(List<int> cards)
+        {
+	        if(cards==null) throw new ArgumentException("cars should not be null");
+	        for(int i=1;i<=cards.Count;i++){
+		        if(i != cards[i-1]) return false;
+	        }
+           
+            return true;
+        }
+        public static void PrintCards(List<int> list)
+        {
+            foreach (var i in list)
+            {
+                Console.Write(i);
+            }
+            Console.WriteLine();
+        }
+        public static void TestShuff()
+        {
+            Console.WriteLine("22 round="+ShufflingCards(22));
+        }
+
+        //8.7
+        public static int Cal(int n)
+        {
+            if (n == 0) return 1;
+            if (n < 0) return 0;
+            return Cal(n - 25) + Cal(n - 10) + Cal(n - 5) + Cal(n - 1);
+        }
+        public static void Test8_7()
+        {
+            Console.WriteLine("5 count="+Cal(5));
         }
     }
 }
