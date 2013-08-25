@@ -10,7 +10,8 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            LongestPalindromicSubString.Test();
+            //LongestPalindromicSubString.Test();
+            SmallOnes.TestGenerateParentheses();
             Console.Read();
         }
     }
