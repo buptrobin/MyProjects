@@ -1,0 +1,128 @@
+digraph Docker {
+	node [shape="record"];
+	edge [style="solid"];
+	#edge [style="dashed"];
+
+	subgraph cluster_ubuntu {
+		label="ubuntu";
+
+		u14043;
+		u14042;
+		u1404;
+	}
+
+	subgraph cluster_base {
+		label="Base";
+
+		u  [label="ubuntu"];
+		u_java [label="ubuntu-java"];
+		u_py [label="ubuntu-py"];
+		u_data [label="ubuntu-data"];
+
+		u_upstart [label="ubuntu-upstart"];
+		u_ldap [label="ubuntu-ldap"];		
+	}
+	u14043->u;
+	u->u_py->u_java,u_data;
+	u->u_upstart->u_ldap;
+
+	subgraph cluster_sys {
+		label="Sys";
+		aptly;
+		backup;
+		collectd;
+		freeipa;
+		grafana;
+		graphite;
+		haproxy;
+		keepalived;
+		mongodb;
+		nagios;
+		nginx;
+		openvpn;
+		php;
+		seyren;
+		unbound;
+		unison;
+		wordpress;
+	}
+
+	subgraph cluster_bd {
+		label="bd";
+
+		kafka;
+		percona;
+		redis;
+		storm;
+		swift;
+
+		subgraph cluster_storm {
+			label="storm";
+			bgcolor="mintcream";
+
+			storm;
+			nimbus;
+			supervisor;
+			storm_ui;
+		}
+
+		subgraph cluster_cdh {
+			label="cdh";
+			bgcolor="mintcream";
+
+			hbase;
+			hadoop;
+			datanode;
+			gateway;
+			clientbase;
+			hbasemaster;
+			hbaseregionserver;
+			historyserver;
+			hive;
+			hivebase;
+			hivemetastore;
+			hue;
+			journalnode;
+			namenode;
+			oozie;
+			os;
+			pig;
+			resourcemanager;
+			zookeeper;
+			ganglia;
+		}		
+	}
+
+	subgraph cluster_ci {
+		label="ci";
+
+		artifactory;
+		dind;
+		gerrit;
+		jenkins;
+		nexus;
+		registry;
+	}
+	u->seyren,unbound;
+	u_upstart->aptly;
+	u_py->backup,haproxy,keepalived,nginx;
+	u->collectd,mongodb;
+	u14042->nagios,graphite,grafana;
+	u_java->openvpn,unison;
+	u_data->percona->php->wordpress;
+	u_data->redis;
+
+	u_data->os->hadoop->clientbase->datanode,gateway,hbase,historyserver,hue,oozie,storm;
+	os->zookeeper,ganglia;
+	hadoop->journalnode,namenode,pig,resourcemanager;
+	hbase->hbasemaster,hbaseregionserver;
+	hivebase->hive,hivemetastore;
+
+	storm->nimbus,storm_ui;
+	u_py->swift;
+
+	u_java->dind->jenkins;
+	u_java->gerrit;
+	unison->nexus;
+	u1404->registry;
+}

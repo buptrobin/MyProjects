@@ -1,0 +1,84 @@
+digraph RTS {
+	node [shape="record"];
+	edge [style="solid"];
+	//layout="neato";
+	//edge [style="dashed"];
+	//rotate=90;
+
+	subgraph cluster_rts {
+		//label="RTS";
+		bgcolor="mintcream";
+
+		RTS [shape="plaintext"];
+		BeaconServer;
+		BidServer;
+		AdServer;
+		AdClick;
+	}
+
+	subgraph cluster_budget {
+		bgcolor="mintcream";
+		label="BudgetManager";
+
+		BudgetServer;
+		BudgetClientAPI [label="BudgetClientAPI\n(Pacing,Pricing)"];
+	}
+
+	subgraph cluster_ADX {
+		bgcolor="Beige";
+		label="ADX";
+
+		Tencent;
+		Baidu;
+	}
+
+	subgraph cluster_DataHandling {
+		label="Data Processing";
+
+		bgcolor="LightCyan";
+
+		Kafka;
+		Storm;
+		HDFS [shape="box3d"];
+		HBase [shape="box3d"];
+		Hive [label="Hive\n(bid log, ad log)"];
+		Offline;
+		AI_Result [shape="ellipse", label="AI Result"];
+	}
+
+	subgraph cluster_Database {
+		label="Database";
+		bgcolor="WhiteSmoke";
+
+		MySQL [shape="box3d"];
+		Redis [shape="box3d"];
+	}
+
+	//RTS [label="{RTS|BidServer|AdServer|AdClick|BeaconServer}"]
+
+	User;
+	SWIFT [label="SWIFT\n(CDN)"];
+
+	{Baidu,Tencent}->BidServer;
+	BidServer->User;
+	User->AdServer,AdClick,BeaconServer;
+
+	RTS->Kafka->Storm->{HDFS,HBase,BudgetClientAPI};
+	SWIFT->RTS,User
+
+	HDFS->Hive [label="Raw logs"];
+	Hive->Offline [label="MapReduce"];
+	
+	Offline->AI_Result [label="Job Analyze"];
+	AI_Result->MySQL;
+	Storm->MySQL [label="Model\nConfiguration"];
+
+	Storm,MySQL->Redis;
+
+	BudgetServer->{Redis,MySQL};
+	BudgetClientAPI->Redis;
+	BidServer->BudgetClientAPI;
+
+	AdServer,AdClick->BudgetClientAPI;
+
+}

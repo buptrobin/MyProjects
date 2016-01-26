@@ -1,0 +1,32 @@
+digraph Beacon {
+	node [shape="record"];
+	edge [style="solid"];
+	#edge [style="dashed"];
+
+	Browser [style="filled", color="black", fillcolor="chartreuse"];
+	BeaconGeneratorServlet;
+	subgraph cluster_bk{
+		label="Beacon Backend";
+		bgcolor="mintcream";
+
+		bk [label="bk.gif"];
+		BeaconEventHandler;
+
+	}
+
+	subgraph cluster_data {
+		label="Data Flow";
+
+		Kafka;
+		HBase;
+	}
+
+	BeaconGeneratorServlet->Browser;
+	Browser->BeaconGeneratorServlet;
+	Browser->bk [label="1 (JS request)" color="brown"];
+	bk->Browser [label="2 (NIL img/js)" color="brown"];
+	bk->BeaconEventHandler [label="3"];
+	BeaconEventHandler->Kafka [label="4 Beacon event"];
+	BeaconEventHandler->HBase [label="4 User based beacon event"];
+
+}
