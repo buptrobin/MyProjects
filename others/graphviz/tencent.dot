@@ -1,0 +1,20 @@
+digraph Tencent {
+	node [shape="record"];
+	edge [style="solid"];
+	//layout="neato";
+	//edge [style="dashed"];
+	//rotate=90;
+
+	TencentADX;
+
+	BidServlet;
+	BidServer;
+	TencentRtbAdaptor;
+	BiduRtbAdaptor;
+	OpenRtbAdaptor;
+
+
+	TencentADX->BidServlet [label="bid request"];
+	BidServlet->TencentADX [label="bid response"];
+	BidServlet->{BiduRtbAdaptor,OpenRtbAdaptor,TencentRtbAdaptor}->BidServer;
+}

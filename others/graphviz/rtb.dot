@@ -1,0 +1,16 @@
+digraph RTB {
+	node [shape="record"];
+	edge [style="solid"];
+	//layout="neato";
+	//edge [style="dashed"];
+	//rotate=90;
+
+	ExchangeAdaptorFactory;
+
+	AbstractExchangeAdaptor;
+	BiduRtbAdaptor;
+	OpenRtbAdaptor;
+
+	ExchangeAdaptorFactory->BiduRtbAdaptor,OpenRtbAdaptor [style="dashed", arrowhead="none"];
+	OpenRtbAdaptor,BiduRtbAdaptor->AbstractExchangeAdaptor [arrowhead="empty"];
+}
