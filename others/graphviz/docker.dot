@@ -61,9 +61,9 @@ digraph Docker {
 			bgcolor="mintcream";
 
 			storm;
-			nimbus;
-			supervisor;
-			storm_ui;
+			nimbus [label="storm-nimbus"];
+			supervisor [label="storm-supervisor"];
+			storm_ui [label="storm-ui"];
 		}
 
 		subgraph cluster_cdh {
@@ -103,6 +103,7 @@ digraph Docker {
 		nexus;
 		registry;
 	}
+
 	u->seyren,unbound;
 	u_upstart->aptly;
 	u_py->backup,haproxy,keepalived,nginx;
@@ -113,12 +114,12 @@ digraph Docker {
 	u_data->redis;
 
 	u_data->os->hadoop->clientbase->datanode,gateway,hbase,historyserver,hue,oozie,storm;
+	hadoop->hivebase->hive,hivemetastore;
 	os->zookeeper,ganglia;
 	hadoop->journalnode,namenode,pig,resourcemanager;
 	hbase->hbasemaster,hbaseregionserver;
-	hivebase->hive,hivemetastore;
 
-	storm->nimbus,storm_ui;
+	storm->nimbus,storm_ui,supervisor;
 	u_py->swift;
 
 	u_java->dind->jenkins;
