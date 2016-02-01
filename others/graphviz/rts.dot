@@ -41,7 +41,7 @@ digraph RTS {
 		Storm;
 		HDFS [shape="box3d"];
 		HBase [shape="box3d"];
-		Hive [label="Hive\n(bid log, ad log)"];
+		Hive [label="Hive\n(bid/impression/click/beacon log)"];
 		Offline;
 		AI_Result [shape="ellipse", label="AI Result"];
 	}

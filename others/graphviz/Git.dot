@@ -1,0 +1,19 @@
+digraph Git {
+	node [shape="record"];
+	edge [style="solid"];
+	#edge [style="dashed"];
+	WD [label="Working Dir"];
+	Stage;
+	HEAD;
+
+	WD->Stage [label="Add"];
+	Stage->HEAD [label="Commit"];
+
+
+
+
+	untracked;
+	unmodified;
+	modified;
+	staged;
+}
