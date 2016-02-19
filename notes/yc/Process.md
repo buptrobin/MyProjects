@@ -42,7 +42,7 @@ git revert                     提交一个新的版本，将需要revert的版�
 git reset --hard HEAD~3        会将最新的3次提交全部重置，就像没有提交过一样
 git reset <file>               发现错误的将不想提交的文件add进入index之后，想回退取消
 git rm --cached README.txt     将文件状态还原为未暂存状态，即回到“Untracked files”文件状态
-git fetch --all                只是下载远程的库的内容，不做任何的合并 
+git fetch --all                只是下载远程的库的内容，不做任何的合并
 git reset --hard origin/master 把HEAD指向刚刚下载的最新的版本
 ```
 #### Git Path
@@ -51,11 +51,10 @@ git reset --hard origin/master 把HEAD指向刚刚下载的最新的版本
 1. git diff > PATCH.diff
 2. git apply PATCH.diff
 ```
-##### Git format patch 
+##### Git format patch
 `This can be send to other guys to patch`
-1. 
+1.
 
 ### Branch
 To delete a local branch
 `git branch -d the_local_branch`
-

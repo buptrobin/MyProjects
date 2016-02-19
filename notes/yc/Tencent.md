@@ -1,4 +1,4 @@
-## Tencent integration
+## Tencent Integration
 ### Preapring
 + Sandbox Account for the ADX
 + Formal Account for the ADX
@@ -21,6 +21,10 @@
 6. ADX->User
 
 ### API
+> 您的dsp_id ：213，您的token ：38ef2b8ef25865d4fe6cc5a8d07ca3f7
+
+> 沙箱环境:http://opentest.adx.qq.com/location/list
+
 
 ### Report
 

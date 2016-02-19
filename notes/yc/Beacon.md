@@ -1,12 +1,15 @@
 ## Beacon @ RTS
 ### Question
-+ When the bk.html will be called?
++ When the bk.html will be called? A: by now we do not use bk.html
 + When script not enbaled?
-+ Where log the user based beacon event to hbase?
++ Where log the user based beacon event to hbase? A: Yes
 
 ### Beacon Flow
 User-->bk.js-->import javascript--> access bk.gif-->BeacanHandler
 
++ bid simulator http://127.0.0.1:8080/bidSimulator 
++ beacon generator http://jinjunmei.bnmat.cn/beaconGenerator?bi=5
++ beacon request http://jinjunmei.bnmat.cn/js/bk.js?ri=5
 
 ### Beacon Generator 
 Generator the beacon code and send to website page owner
