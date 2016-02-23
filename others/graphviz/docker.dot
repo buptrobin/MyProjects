@@ -1,6 +1,7 @@
 digraph Docker {
 	node [shape="ellipse"];
 	edge [style="solid"];
+	
 	#edge [style="dashed"];
 
 	null;
@@ -44,7 +45,7 @@ digraph Docker {
 
 	iLocal->cRunning [label="run"];
 	cRunning->null [label="rm"];
-	cRunning->iLocal [label="commit"];
+	# cRunning->iLocal [label="commit"];
 	cRunning->cStopped [label="stop"];
 	cStopped->cRunning [label="start"];
 	cRunning->cAttached [label="attach/nsenter"];
