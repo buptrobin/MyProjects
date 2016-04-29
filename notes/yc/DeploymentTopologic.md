@@ -12,6 +12,10 @@
 
 ## Jenkins
 
+## Grafana
+> https://grafana1.t1.shadc.yosemitecloud.com/
+> admin/admin is the login
+
 ### Build RTS Main test patch
 
 Parmeter | Value

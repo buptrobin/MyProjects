@@ -7,11 +7,9 @@ digraph CM {
 	DSP;
 	ADX;
 
-	Page->DSP [label="1"];
-	DSP->Page [label="2, 302 cm request"];
-	Page->ADX [label="3, xid,did,dck"];
-	ADX->Page [label="4, 302 cm response, xid,xck"];
-	DSP->Page [label="5, 1x1 img"];
-
-
+	Page->DSP [label="1)"];
+	DSP->Page [label="2) 302 cm request"];
+	Page->ADX [label="3) xid,did,dck"];
+	ADX->Page [label="4) 302 cm response, xid,xck"];
+	DSP->Page [label="5) 1x1 img"];
 }

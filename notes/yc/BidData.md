@@ -1,12 +1,29 @@
 [TOC]
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-	- [BigData](#bigdata)
-		- [Glossary](#glossary)
-		- [Hadoop Ecosystem](#hadoop-ecosystem)
-
-<!-- /TOC -->
 ## BigData
+
+### Solution
++ ELK (ElasticSearch, Logstash, Kipana)
+	> monitoring/diagnostics against log file sources etc.
+##### Log
++ graylog
++ flume
+
+##### ETL
++ Talend Open Studio
++ Pentaho Kettle
+
+##### Monitor
++ open-falcon from Xiaomi
++ Grafana+influxDB+collectd
+	>  purely time series metrics (specifically, monitoring applications & servers)
++ Grafana+Zabbix
+	> Grafana + Zabbix datasource
+##### One-stop
+
++ databricks https://community.cloud.databricks.com/?o=1816859815744643
++ oneops oneops.com
+
 ### Glossary
   + HDFS - Hadoop Distributed File System
   > Storage Layer, distributed, scalable, java-based, large volumes of unstructured data
@@ -50,6 +67,9 @@
   + Kubernetes
   + ElasticSearch
   + Jenkins
+	+ Zabbix
+	> enterprise-level software designed for real-time monitoring of millions of metrics collected from tens of thousands of servers, virtual machines and network devices
+
 ### Hadoop Ecosystem
   ![Hadoop Ecocsystem](http://www.searchtb.com/wp-content/uploads/2011/01/image0010.jpg)
 

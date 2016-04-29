@@ -1,0 +1,25 @@
+digraph Bid {
+	node [shape="record"];
+	edge [style="solid"];
+	#edge [style="dashed"];
+
+	JettyServerWrapper;
+	AuditRequestHandler;
+	AbstractExchangeAdaptor;
+	ExchangeAuditFactory;
+	ExchangeType;
+	AuditRequestInfo;
+	TencentAudit;
+
+	JettyServerWrapper->AuditRequestHandler [label="register with path"];
+	JettyServerWrapper->ExchangeType [label="getAuditServletPath"];
+
+	AbstractExchangeAdaptor->ExchangeAuditFactory [label="exchangeTypeToAudit"];
+ 	ExchangeAuditFactory->TencentAudit;
+ 	AuditRequestHandler->AbstractExchangeAdaptor [label="getAudit"];
+ 	AuditRequestHandler->AuditRequestInfo;
+ 	AuditRequestHandler->TencentAudit;
+ 	TencentAudit->AddCreative;
+ 	TencentAudit->GetCreativeAuditStatus;
+ 	TencentAudit->GetCreativeDenyList;
+}

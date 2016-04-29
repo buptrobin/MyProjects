@@ -3,12 +3,13 @@ digraph Git {
 	edge [style="solid"];
 	#edge [style="dashed"];
 	WD [label="Working Dir"];
-	Stage;
-	HEAD;
+	Index [label="Index/Stage\n(snapshot of next commit)"];
+	HEAD [label="HEAD\nlast commit snapshot"];
 
-	WD->Stage [label="Add"];
-	Stage->HEAD [label="Commit"];
-
+	WD->Index [label="Stage files(Add)"];
+	Index->HEAD [label="Commit"];
+	WD->HEAD [label="Checkouts"];
+	HEAD->WD [label="edit file"];
 
 
 

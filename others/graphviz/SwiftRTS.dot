@@ -1,0 +1,26 @@
+digraph SwiftRTS {
+	node [shape="record"];
+	edge [style="solid"];
+	#edge [style="dashed"];
+
+	ADX;
+	PAGE;
+
+	subgraph cluster_data {
+		label="YC DSP";
+		bgcolor="mintcream";
+
+		RTS;
+		SWIFT [style="filled"];
+		DB;
+		UI [label="UI/Frontenc"]
+	}
+
+	UI->SWIFT [label="upload ad creatives"];
+	UI->DB [label="write ad metadata"];
+	DB->RTS [label="read ad metadata"];
+	RTS->ADX [label="send ad URL"];
+	SWIFT->PAGE [label="public read ad creatives"];
+	SWIFT->RTS [label="get public URL"];
+
+}
