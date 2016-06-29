@@ -1,0 +1,11 @@
+digraph USER {
+	node [shape="record"];
+	edge [style="solid"];
+	rankdir=LR;
+	#edge [style="dashed"];
+ 	BRH[label="BidRequestHandler"];
+	BIDU_bidinfo [label="BiduRtbAdaptor.getBidRequestInfo"];
+
+	BRH->BIDU_bidinfo;
+
+}

@@ -9,7 +9,25 @@ digraph CM {
 
 	Page->DSP [label="1)"];
 	DSP->Page [label="2) 302 cm request"];
-	Page->ADX [label="3) xid,did,dck"];
-	ADX->Page [label="4) 302 cm response, xid,xck"];
+	Page->ADX [label="3) adxid,demand cookie id,demond cookie"];
+	ADX->Page [label="4) 302 cm response, adxid,xck"];
 	DSP->Page [label="5) 1x1 img"];
+
+
+	USER;
+	YC;
+	TENCENT;
+	USER->YC [label="1) http://jinjunmei.bnmat.cn/bk.gif?ri=S3YXoJLp9HU"];
+	YC->USER [label="2) 302"];
+	USER->TENCENT [label="3) http://cm.l.qq.com/?dspid=10092&dspuid=xxx&gettuid=1&ext="];
+	TENCENT->USER [label="4) 302"];
+	USER->YC [label="5) http://jinjunmei.bnmat.cn/cm?ex=5&tuid=xxx&ver=1&ext=H2ieG9tQ"];
+	YC->USER [label="6) 1x1 img"];
+
+	UserRequestHandlerType;
+	CookieMatchHandler;
+
+	BeaconHandler->
+	UserRequestHandlerType->CookieMatchHandler [label="cm"];
+
 }

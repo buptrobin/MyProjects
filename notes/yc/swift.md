@@ -30,6 +30,9 @@
 ### Performance test (Nia)
 The other task is testing and is probably the most time consuming.  Swift has not been tested at all for production use.  It needs to be stressed significantly prior to deployment
 
+### Configuration
++ ConfigurationKey.SWIFT_CREATIVE_ACCESS_URL = "http://swift.yosemitecloud.com:8080/v1/AUTH_2e3bdbd5-527f-4f62-adf4-10b4cdfbce1b"
++ swift.creative.access.url in configuration file
 
 ### Reference
 http://docs.openstack.org/developer/swift/associated_projects.html?highlight=php
@@ -74,7 +77,8 @@ curl -i http://swift.yosemitecloud.com:8080/v1/AUTH_2e3bdbd5-527f-4f62-adf4-10b4
   + curl -i http://swift.yosemitecloud.com:8080/v1/AUTH_2e3bdbd5-527f-4f62-adf4-10b4cdfbce1b/test/proguard.conf -X PUT -H "X-Auth-Token: AUTH_tka0cd4a502fab4a57978a463e44fc2ffb" -T ./proguard.conf
 
 + list files
-  + curl -v -H 'X-Auth-Token: AUTH_tka0cd4a502fab4a57978a463e44fc2ffb' http://swift.yosemitecloud.com:8080/v1/AUTH_2e3bdbd5-527f-4f62-adf4-10b4cdfbce1b/test
+
+  + curl -v -H 'X-Auth-Token: AUTH_tk13ecae779fb341968c7e78d9a986e3ff' http://swift.yosemitecloud.com:8080/v1/AUTH_2e3bdbd5-527f-4f62-adf4-10b4cdfbce1b/test
   //curl -v -H 'X-Auth-User: 2e3bdbd5-527f-4f62-adf4-10b4cdfbce1b' -H 'X-Auth-Key: test'  http://swift.yosemitecloud.com:8080/v1/AUTH_2e3bdbd5-527f-4f62-adf4-10b4cdfbce1b/test
 
 + set permission
@@ -86,3 +90,148 @@ https://swiftstack.com/docs/cookbooks/swift_usage/container_acl.html
   + Container Level ACL
     + curl -X <PUT|POST> -i -H "X-Auth-Token: <TOKEN>" -H "X-Container-Read: <ACL>" <STORAGE_URL>/<container>
     + curl -X PUT -i -H "X-Auth-Token: AUTH_tka0cd4a502fab4a57978a463e44fc2ffb" -H "X-Container-Read: .r:*" http://swift.yosemitecloud.com:8080/v1/AUTH_2e3bdbd5-527f-4f62-adf4-10b4cdfbce1b/test
+### swifttest.java
+```JAVA
+package com.yosemitecloud.rts.main.tools;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+
+import org.apache.commons.io.IOUtils;
+import org.javaswift.joss.client.factory.AccountConfig;
+import org.javaswift.joss.client.factory.AccountFactory;
+import org.javaswift.joss.client.factory.AuthenticationMethod;
+import org.javaswift.joss.model.Access;
+import org.javaswift.joss.model.Account;
+import org.javaswift.joss.model.Container;
+import org.javaswift.joss.model.StoredObject;
+
+import com.yosemitecloud.lib.info.DbUpdaterConfig;
+
+public class SwiftTest {
+
+    public static void main(final String[] args) {
+        final String url = "http://swift.yosemitecloud.com:8080/auth/v1.0";
+        final String username = "2e3bdbd5-527f-4f62-adf4-10b4cdfbce1b";
+        final String password = "test";
+        final String containerName = "test"; // dbfiles, docker
+        final String tenantName = "test";
+
+        final StoredObject myobject = null;
+        try {
+            DbUpdaterConfig.init();
+        } catch (final IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        System.out.println(DbUpdaterConfig.getSwiftTenantname());
+
+        Container mycontainer = null;
+        final AccountConfig config = new AccountConfig();
+        config.setUsername(username);
+        config.setPassword(password);
+        config.setTenantName("test");
+        config.setAuthUrl(url);
+
+        /*
+         * config.setUsername(DbUpdaterConfig.getSwiftUsername());
+         * config.setPassword(DbUpdaterConfig.getSwiftPassword());
+         * config.setTenantName(DbUpdaterConfig.getSwiftTenantname());
+         * config.setAuthUrl(url);
+         */
+        config.setAuthenticationMethod(AuthenticationMethod.BASIC);
+        final Account account = new AccountFactory(config).createAccount();
+        final Access access = account.authenticate();
+        System.out.println("token=" + access.getToken());
+        System.out.println("public url=" + access.getPublicURL());
+        System.out.println("internal url=" + access.getInternalURL());
+
+        final Collection<Container> containers = account.list();
+        for (final Container currentContainer : containers) {
+            System.out.println(currentContainer.getName());
+            if (containerName.equals(currentContainer.getName())) {
+                mycontainer = currentContainer;
+                break;
+            }
+        }
+        if (mycontainer != null) {
+            final Collection<StoredObject> objects = mycontainer.list();
+            for (final StoredObject currentObject : objects) {
+                // System.out.println("object:" +
+                // currentObject.getPrivateURL());
+                // if (name.equals(currentObject.getName())) {
+                // myobject = currentObject;
+                // break;
+                // }
+            }
+        }
+
+        final StoredObject obj = mycontainer.getObject("yc.xml");
+        System.out.println(obj.getPublicURL());
+        // uploadObject(mycontainer, "yc.xml", "/home/robin/yc.xml");
+        // deleteObject(mycontainer, "yc.xml");
+        // downloadObject(mycontainer, "yc.xml");
+        /*
+         *
+         * // AccountConfig config = new AccountConfig(); //
+         * config.setAuthenticationMethod(AuthenticationMethod.BASIC); //
+         * config.setUsername(username); // config.setPassword(password); //
+         * config.setAuthUrl(endpoint);
+         *
+         * AccountConfig conf = getStandardConfig(url, username, password,
+         * AuthenticationMethod.BASIC); Account account = new
+         * AccountFactory(conf).createAccount();
+         *
+         * Container container = account.getContainer(containerName);
+         *
+         * System.out.println("container:" + container);
+         */
+
+    }
+
+    private static void uploadObject(final Container container, final String name, final String path) {
+        final StoredObject obj = container.getObject(name);
+        obj.uploadObject(new File(path));
+
+        System.out.println("obj url=" + obj.getPublicURL());
+
+    }
+
+    private static void deleteObject(final Container container, final String name) {
+        final StoredObject obj = container.getObject(name);
+        obj.delete();
+    }
+
+    private static void downloadObject(final Container container, final String name) {
+        final StoredObject obj = container.getObject(name);
+        final InputStream is = obj.downloadObjectAsInputStream();
+
+        String s = "";
+        try {
+            s = IOUtils.toString(is);
+        } catch (final IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        System.out.println(s);
+
+    }
+
+    private static AccountConfig getStandardConfig(final String url, final String username, final String password,
+            final AuthenticationMethod method) {
+        final AccountConfig conf = new AccountConfig();
+        conf.setAuthUrl(url);
+        conf.setUsername(username);
+        conf.setPassword(password);
+        conf.setAuthenticationMethod(method);
+        conf.setAllowContainerCaching(false);
+        conf.setAllowCaching(false);
+        return conf;
+    }
+
+}
+
+```

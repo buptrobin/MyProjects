@@ -19,4 +19,6 @@ digraph Describe {
 	tab [shape="tab"];
 	box3d [shape="box3d"];
 	component [shape="component" style="dotted"];
+
+	plaintext->ellipse;
 }

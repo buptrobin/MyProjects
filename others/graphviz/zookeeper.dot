@@ -1,0 +1,16 @@
+digraph JavaInject {
+	node [shape="record"];
+	edge [style="solid"];
+	#edge [style="dashed"];
+
+	BudgetManagerLeaderSelectorImpl [style="filled", color="black", fillcolor="chartreuse"];
+	BudgetManagerLeaderSelector;
+	ConnectionStateListener;
+	MyLeaderLatch;
+	AbstractModule;
+	BudgetManagerModule;
+	BudgetManagerModule->AbstractModule;
+	
+
+
+}

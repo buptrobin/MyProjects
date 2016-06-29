@@ -4,57 +4,28 @@ digraph Bid {
 	#edge [style="dashed"];
 
 	ADX [style="filled", color="black", fillcolor="chartreuse"];
+	BidRequestHandler [label="BidRequestHandler(Tencent)"];
+	TencentRtbAdaptor [label="TencentRtbAdaptor"];
+	#BidRequestInfo;
+	BidResponseInfo [label="BidResponseInfo"];
+	BidSlotInfo;
+	AdSelector;
+	#BidInfo;
+	EventRecorder;
+	HttpServletRequest;
+	HttpServletResponse;
+	PlacementUnit;
 
-	WebSite [style="filled", color="black", fillcolor="chartreuse"];
-	Page [style="filled", color="black", fillcolor="chartreuse"
-				label="PAGE\nyosem1teParas\nyosem1teBkReq"];
-	User [style="filled", color="black", fillcolor="chartreuse"];
-	bk_js [label="bk.js" style="dashed"];
-	bk_gif [label="bk.gif" style="dashed"];
-	BeaconGeneratorServlet;
-	adServingJavascript [shape="egg" label="adServingJavascript.js" style="dashed"];
-	JsToServeBeaconHandler [label="JsToServeBeaconHandler"];
+	ADX->BidRequestHandler [label="[1] doPost:bid request"];
+	BidRequestHandler->TencentRtbAdaptor [label="[2]getBidRequestInfo"];
+	BidRequestHandler->BidResponseInfo [label="[3]new instance"];
+	BidRequestHandler->TencentRtbAdaptor [label="[4]sendBidResponse"];
+	BidRequestHandler->EventRecorder [label="[5]add event"];
 
-	subgraph cluster_bk{
-		label="Beacon Request Handler";
-		bgcolor="mintcream";
+	TencentRtbAdaptor->HttpServletRequest [label="[2.1]parse request"];
+	TencentRtbAdaptor->BidSlotInfo [label="[2.2]parse bid slot"];
+	TencentRtbAdaptor->PlacementUnit [label="[2.3]getPlacementByExchangeAndSize"];
+	TencentRtbAdaptor->HttpServletResponse [label="[4.1]write to"];
 
-		BeaconInfo [label="BeaconInfo\n(AbstractUserRequestInfo)" shape="egg"
-								style="dashed"];
-		BeaconHandler [label="BeaconHandler.processRequest"];
-		AbstractUserRequestHandler [label="AbstractUserRequestHandler.doGet"];
-		DirectRequestUserInfo [label="DirectRequestUserInfo"];
-		BrowserCookieWrapper [label="BrowserCookieWrapper\nas UserSideInfo"];
-		EventRecorder;
-	}
-
-	subgraph cluster_data {
-		label="Data Flow";
-
-		Kafka;
-		HBase;
-	}
-
-	WebSite->BeaconGeneratorServlet [style="dashed" label="1"];
-	BeaconGeneratorServlet->Page [label="2 add beacon \njs to page" style="dashed"];
-	User->Page [label="3"];
-	Page->bk_js [label="4 script enabled"];
-	Page->bk_gif [label="4 script not enabled\nri=xx"];
-	bk_js->JsToServeBeaconHandler [label="4 mapped in \nUserRequestHandlerType"];
-
-	adServingJavascript->JsToServeBeaconHandler [label="read resource" arrowhead="none"
-			style="dashed"];
-	JsToServeBeaconHandler->Page [label="5 return js"];
-
-	Page->bk_gif [label="6 ri=xx"];
-	bk_gif->AbstractUserRequestHandler->BeaconHandler [label="7 mapped"]
-	BeaconInfo->AbstractUserRequestHandler [arrowhead="none" style="dashed"];
-	AbstractUserRequestHandler->EventRecorder [label="9 EventRecorder.add"];
-
-	BeaconHandler->Page [label="8 nilHtml/nilGif response"];
-	BeaconHandler->DirectRequestUserInfo [label="new instance"];
-	DirectRequestUserInfo->BrowserCookieWrapper [label="flush"];
-	BrowserCookieWrapper->HBase;
-	EventRecorder->Kafka [label="10 Beacon event"];
-	//EventRecorder->HBase [label="10 User based beacon event"];
+	BidRequestHandler->AdSelector [label="selectAdToBid"];
 }

@@ -1,0 +1,11 @@
+digraph JavaInject {
+	node [shape="record"];
+	edge [style="solid"];
+	#edge [style="dashed"];
+
+	InjectorFactory [style="filled", color="black", fillcolor="chartreuse"];
+	Injector;
+	Module;
+	SessionFactory;
+
+}
