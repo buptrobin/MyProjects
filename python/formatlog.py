@@ -7,6 +7,7 @@ def printIndent(indent):
 
 def indentLines(text):
 	indent = 0
+	
 	for letter in text:
 		if(letter == '['):
 			sys.stdout.write('[\n')
@@ -37,7 +38,8 @@ if not os.path.isfile(filepath):
 
 f = open(filepath)
 for line in f.readlines():
-	indentLines(line)
+	s = line.replace("___",'\n')
+	indentLines(s)
 
 
 

@@ -1,0 +1,62 @@
+digraph DTise {
+	node [shape="record"];
+	edge [style="solid"];
+	graph [rankdir=TB];
+	#edge [style="dashed"];
+
+	subgraph cluster_jobs{
+		label="Hadoop Jobs";
+		bgcolor="mintcream";
+
+	  J1[label="Join Ads event"];
+		c_genbt[label="生成大表"];
+		c_fill [label="Fill D,M,X"];
+		c_zhiliangfen [label="质量分, 样本"];
+		c_segement [label="计算人群"];
+		J1,c_genbt,c_fill,c_zhiliangfen,c_segement->Hadoop;
+	}
+
+	subgraph cluster_DataStore{
+		label="Data Store";
+		bgcolor="mintcream";
+
+		Hadoop[style="filled", color="black", fillcolor="chartreuse" label="Hadoop"];
+		ES [label="ElasticSearch"];
+		MySQL;
+
+	}
+
+	AS [style="filled", color="black", fillcolor="chartreuse" label="AppServer"];
+
+	Hadoop,AS->ES, MySQL;
+
+
+	subgraph cluster_terminal{
+		label="终端接口";
+		bgcolor="mintcream";
+
+		subgraph cluster_terminal2{
+			label="需要访问ES";
+			bgcolor="yellow";
+
+			Client [label="ImportClient"];
+			Segment [label="工作台人群管理"];
+			Sample [label="样本"];
+		}
+
+		subgraph cluster_terminal1{
+			label="需要访问MySQL";
+			bgcolor="yellow";
+
+			BTV [label="大表版本间区别"];
+			Authentication;
+			Authorization;
+			DMX [label="DMX列规则定义"];
+			Metadata [label="元数据"];
+		}
+	}
+
+	Metadata, Client,Segment,Sample,BTV,Authentication,Authorization,DMX ->AS;
+
+
+}

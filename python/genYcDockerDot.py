@@ -47,7 +47,7 @@ def clean(s):
 
 
 nodeset = set()
-rootdir = "/home/robin/yc/etc/docker/"
+rootdir = "/home/robin/yc/etc/gitbak/docker/"
 fout = open("/home/robin/tmp/out.dot","w")
 header = '''
 digraph Docker {

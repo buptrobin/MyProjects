@@ -1,0 +1,79 @@
+digraph oozie_pipeline {
+	node [shape="record"];
+	edge [style="solid"];
+	graph [rankdir=TB];
+	#edge [style="dashed"];
+
+	start [shape="circle"];
+	fork1 [shape="ellipse"];
+	join1 [shape="ellipse"];
+	start->wf_gen_model_mv_all->wf_gen_model_mv_pos->fork1;
+
+	fork1->wf_gen_campaing_stats_all,wf_gen_campaing_stats_pos, wf_gen_location_stats;
+	wf_gen_campaing_stats_all->wf_export_campaing_stats_all;
+	wf_gen_campaing_stats_pos->wf_export_campaing_stats_pos;
+	wf_gen_location_stats->wf_export_location_stats;
+
+	wf_export_campaing_stats_all, wf_export_campaing_stats_pos, wf_export_location_stats->join1;
+
+	end [shape="circle"];
+
+	join1->end;
+/*
+	subgraph cluster_facts{
+		label="facts";
+		bgcolor="mintcream";
+
+	}
+	subgraph cluster_attribution{
+		label="attribution";
+		bgcolor="mintcream";
+		impressions [style="filled", color="black", fillcolor="chartreuse"];
+		bids [style="filled", color="black", fillcolor="chartreuse"];
+		clicks [label="CLICKS", style="filled", color="black", fillcolor="chartreuse"];
+		actions [label="ACTIONS", style="filled", color="black", fillcolor="chartreuse"];
+		actiontag_stats[style="filled", color="black", fillcolor="chartreuse"];
+		responses[style="filled", coalor="black", fillcolor="chartreuse"];
+    actiontags;
+		attributions;
+    clickfrauds;
+    clicktags;
+
+		click_file [shape="note"];
+		actions_file [shape="note"];
+
+		clicktags->click_file [label="3"];
+		actions->actions_file [label="4"];
+		clicks->clickfrauds [label="1 defraud_clicks"];
+		{clickfrauds, clicks}->clicktags [label="2 defraud_clicks"];
+		impressions->attributions[label="5 Find impressions before actions"];
+		attributed_actions->actiontags[label="7 Tag actions"];
+		actions,attributions->attributed_actions[label="6 Add precise_attribution"];
+		responses,impressions->impressions[label="10 Join impressions and responses(pos)"];
+		actiontags->actiontag_stats[label="8 actiontags stats"];
+		clicktags,actiontags->responses[label="9 Aggregate actions and clicks"];
+	}
+
+  subgraph cluster_mv{
+    label="mv";
+    bgcolor="mintcream";
+		campaign_stats [style="filled", color="black", fillcolor="yellow"];
+    modeling_mv->campaign_stats[label="Gen campaign_stats"];
+		location_stats [style="filled", color="black", fillcolor="yellow"];
+		modeling_mv->location_stats;
+	}
+
+  impressions,bids->modeling_mv[label="Gen modeling_mv"];
+
+  subgraph cluster_credit{
+    label="credits";
+    bgcolor="mintcream";
+
+    campaign_credits[style="filled", color="black", fillcolor="yellow"];
+  }
+
+	actions->campaign_credits[label="Claim credits"];
+
+
+*/
+}
