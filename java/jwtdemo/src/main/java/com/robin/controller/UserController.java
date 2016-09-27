@@ -30,13 +30,13 @@ public class UserController {
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public LoginResponse login(@RequestBody final UserLogin login)
             throws ServletException {
-        if (login.name == null || !userDb.containsKey(login.name)) {
+        if (login.name == null || !userDb.containsKey(login.name) || !login.password.equals("111")) {
             throw new ServletException("Invalid login");
         }
         return new LoginResponse(Jwts.builder().setSubject(login.name)
                 .claim("roles", userDb.get(login.name))
                 .setIssuedAt(new Date())
-                .signWith(SignatureAlgorithm.HS256, "secretkey")
+                .signWith(SignatureAlgorithm.HS256, "DTiser")
                 .compact());
     }
 
