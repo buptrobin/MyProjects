@@ -11,6 +11,7 @@ import java.util.Map;
 
 import javax.servlet.ServletException;
 
+import com.robin.jwt.JwtHelper;
 import org.springframework.web.bind.annotation.*;
 
 import io.jsonwebtoken.Jwts;
@@ -21,6 +22,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class UserController {
 
     private final Map<String, List<String>> userDb = new HashMap<>();
+    private final Map<String, String> tokenCache = new HashMap<>();
 
     public UserController() {
         userDb.put("tom", Arrays.asList("user"));
@@ -33,11 +35,14 @@ public class UserController {
         if (login.name == null || !userDb.containsKey(login.name) || !login.password.equals("111")) {
             throw new ServletException("Invalid login");
         }
-        return new LoginResponse(Jwts.builder().setSubject(login.name)
+
+        String token = Jwts.builder().setSubject(login.name)
                 .claim("roles", userDb.get(login.name))
                 .setIssuedAt(new Date())
-                .signWith(SignatureAlgorithm.HS256, "DTiser")
-                .compact());
+                .signWith(SignatureAlgorithm.HS256, JwtHelper.SIGN_KEY)
+                .compact();
+
+        return new LoginResponse(token);
     }
 
     @GetMapping(value="greeting")

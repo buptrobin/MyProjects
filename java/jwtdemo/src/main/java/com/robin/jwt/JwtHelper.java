@@ -15,6 +15,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 public class JwtHelper {
+    public static String SIGN_KEY = "DTise";
     public static Claims parseJWT(String jsonWebToken, String base64Security){
         try
         {
