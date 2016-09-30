@@ -14,6 +14,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.robin.jwt.JwtHelper;
 import org.springframework.web.filter.GenericFilterBean;
 
 import io.jsonwebtoken.Claims;
@@ -41,9 +42,10 @@ public class JwtFilter extends GenericFilterBean {
 
         try {
             final Claims claims = Jwts.parser()
-                    .setSigningKey("secretkey")
+                    .setSigningKey(JwtHelper.SIGN_KEY)
                     .parseClaimsJws(token)
                     .getBody();
+            System.out.println(claims);
             request.setAttribute("claims", claims);
         }
         catch (final SignatureException e) {
