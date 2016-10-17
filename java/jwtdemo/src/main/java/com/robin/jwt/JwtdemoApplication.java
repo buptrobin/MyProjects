@@ -1,6 +1,6 @@
 package com.robin.jwt;
 
-import com.robin.filter.JwtFilter;
+import com.robin.filter.AuthFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +14,7 @@ public class JwtdemoApplication {
     @Bean
     public FilterRegistrationBean jwtFilter() {
         final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-        registrationBean.setFilter(new JwtFilter());
+        registrationBean.setFilter(new AuthFilter());
         registrationBean.addUrlPatterns("/api/*");
 
         return registrationBean;

@@ -21,7 +21,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
 
-public class JwtFilter extends GenericFilterBean {
+public class AuthFilter extends GenericFilterBean {
 
     @Override
     public void doFilter(final ServletRequest req,
