@@ -23,5 +23,7 @@ public class VertxMain {
         }
 
         vertx.deployVerticle(new EventBusSenderVerticle());
+
+        vertx.deployVerticle(new VertxHttpServerVerticle());
     }
 }

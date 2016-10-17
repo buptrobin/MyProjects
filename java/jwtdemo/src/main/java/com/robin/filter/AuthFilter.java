@@ -45,6 +45,7 @@ public class AuthFilter extends GenericFilterBean {
                     .setSigningKey(JwtHelper.SIGN_KEY)
                     .parseClaimsJws(token)
                     .getBody();
+            System.out.println(claims);
             request.setAttribute("claims", claims);
         }
         catch (final SignatureException e) {

@@ -32,7 +32,7 @@ public class UserController {
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public LoginResponse login(@RequestBody final UserLogin login)
             throws ServletException {
-        if (login.name == null || !userDb.containsKey(login.name) || !login.password.equals("111")) {
+        if (login.name == null || !userDb.containsKey(login.name) || login.password==null || !login.password.equals("111")) {
             throw new ServletException("Invalid login");
         }
 
