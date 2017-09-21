@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link th:href="@{bootstrap/css/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{bootstrap/css/bootstrap-theme.css}" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">上传文件</h3>
+    </div>
+    <div class="panel-body">
+        <form method="post" action="/upload" enctype="multipart/form-data">
+            <input type="file" name="file"/><br/><br/>
+            <input type="submit" value="上传"/>
+        </form>
+    </div>
+</div>
+<script th:src="@{bootstrap/js/jquery-3.2.1.js}" type="text/javascript"></script>
+<script th:src="@{bootstrap/js/bootstrap.js}"></script>
+</body>
+</html>
